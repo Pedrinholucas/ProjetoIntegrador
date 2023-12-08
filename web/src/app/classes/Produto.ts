@@ -4,6 +4,7 @@ import { Fornecedor } from "./Fornecedor";
 export class Produto{
     id: number;
     nome: string;
+    img: string;
     valor: number;
     descricao: string;
     estoque: number;
