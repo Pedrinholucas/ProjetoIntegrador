@@ -54,12 +54,18 @@ import {MAT_DATE_LOCALE, MatNativeDateModule, MatRippleModule} from '@angular/ma
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LoginComponent } from './login/login.component';
+import { SetupComponent } from './login/setup.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavBarComponent
+    NavBarComponent,
+    LoginComponent,
+    SetupComponent,
+    ClienteComponent
   ],
   imports: [
     BrowserModule,

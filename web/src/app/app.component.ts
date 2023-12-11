@@ -1,10 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output, afterNextRender } from '@angular/core';
+import { InjectionToken  } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
-  title = 'web';
+  usuario = user
+  constructor(public router: Router) {}
+  title = 'Empório Dona Maria';
+  sidenavOpened = false;
+  logar = false;
+  toggleSidenav() {
+    console.log('cu')
+    this.sidenavOpened = !this.sidenavOpened;
+  }
+  fazerSexo(a: any){
+    this.logar = false;
+    user = a
+    this.usuario = user
+  }
 }
+export let user: any = ''
+
+export function updateUser(valor: any){
+  user = valor
+}
+

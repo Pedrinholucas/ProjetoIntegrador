@@ -1,0 +1,11 @@
+.route-link {
+    display: block;
+    margin-bottom: 10px; /* Ajuste conforme necessário para o espaçamento desejado entre os links */
+    text-decoration: none; /* Remova a sublinhado padrão */
+    color: #333; /* Cor do texto - ajuste conforme necessário */
+    font-size: 16px; /* Tamanho da fonte - ajuste conforme necessário */
+  }
+  
+  .route-link:hover {
+    color: #007bff; /* Cor do texto ao passar o mouse - ajuste conforme necessário */
+  }

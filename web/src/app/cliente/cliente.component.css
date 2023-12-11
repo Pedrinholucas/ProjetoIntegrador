@@ -1,0 +1,14 @@
+
+  .form-container {
+    width: 300px;
+    margin: auto;
+  }
+
+  .input-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  button {
+    margin-top: 15px;
+  }

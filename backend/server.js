@@ -2,6 +2,7 @@ const express = require('express');
 var cors = require('cors')
 var app = express()
 app.use(cors());
+app.use(express.json());
 var mysql = require('mysql');
 let door = 3001;
 var con = mysql.createConnection({
@@ -48,6 +49,31 @@ app.get('/cliente', function(req, res) {
         res.send(result);
     });
 });
+app.post('/cliente/login', (req, res) => {
+    console.log(req.body)
+    con.query('USE EmporioDonaMaria;');
+    con.query(`select * from cliente where email = '${req.body.email}' and senha = '${req.body.senha}'`, function (err, result) {
+        if (err) {
+            res.send('deu erro kkkkkkkkkkkkk '+err.code)
+            throw err;
+        }
+        console.log(result)
+        res.send(result)
+    });
+})
+
+app.put('/cliente', function(req, res) {
+    con.query('USE EmporioDonaMaria;');
+    con.query(`update cliente set nome = '${req.body.nome}', email = '${req.body.email}', telefone = '${req.body.telefone}' where id = ${req.body.id}`, function (err, result) {
+        if (err) {
+            res.send('Ocorreu um erro: ' + err.code);
+            throw err;
+        }
+        console.log(result);
+        res.send(result);
+    });
+});
+
 app.get('/fornecedor', function(req, res) {
     con.query('USE EmporioDonaMaria;');
     con.query('SELECT * FROM Fornecedor;', function (err, result) {
@@ -59,6 +85,18 @@ app.get('/fornecedor', function(req, res) {
         res.send(result);
     });
 });
+app.post('/fornecedor/login', (req, res) => {
+    console.log(req.body)
+    con.query('USE EmporioDonaMaria;');
+    con.query(`select * from fornecedor where email = '${req.body.email}' and senha = '${req.body.senha}'`, function (err, result) {
+        if (err) {
+            res.send('deu erro kkkkkkkkkkkkk '+err.code)
+            throw err;
+        }
+        console.log(result)
+        res.send(result)
+    });
+})
 app.get('/encomenda', function(req, res) {
     con.query('USE EmporioDonaMaria;');
     con.query('SELECT * FROM Encomenda;', function (err, result) {

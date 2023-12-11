@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-nav-bar',
+  selector: 'nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.css'
 })
 export class NavBarComponent {
+  routes: any[] = [{label: 'Suas Transportadoras' ,rota: 'transportadora'}, {label: 'Seus Produtos' ,rota: 'produto'}]
 
 }
