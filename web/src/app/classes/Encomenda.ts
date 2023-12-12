@@ -1,4 +1,5 @@
 import { Cliente } from "./Cliente";
+import { Produto } from "./Produto";
 import { Transportadora } from "./Transportadora";
 
 export class Encomenda{
@@ -11,4 +12,5 @@ export class Encomenda{
     dataEntrega: Date;
     cliente: Cliente;
     transportadora: Transportadora;
+    produtos: Produto[]
 }

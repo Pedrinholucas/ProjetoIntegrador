@@ -1,1 +1,68 @@
-<p>form-produto works!</p>
+<mat-card class="form-container"*ngIf="user.tipo == 'fornecedor'">
+    <mat-card-title>Editando Produto</mat-card-title>
+    <mat-card-content>
+      <form class="horizontal-form">
+        <div class="input-container">
+          <mat-form-field class="input-field">
+            <mat-label>Nome</mat-label>
+            <input [(ngModel)]="produto.nome" name="name" matInput placeholder="Nome" required>
+          </mat-form-field>
+        </div>
+  
+        <div class="input-container">
+          <mat-form-field class="input-field">
+            <mat-label>Email</mat-label>
+            <input [(ngModel)]="produto.descricao" name="email" matInput placeholder="Email" type="email" required>
+          </mat-form-field>
+        </div>
+  
+        <div class="input-container">
+          <mat-form-field class="input-field">
+            <mat-label>Valor</mat-label>
+            <input [(ngModel)]="produto.valor" name="valor" matInput placeholder="Valor">
+          </mat-form-field>
+        </div>
+  
+        <div class="input-container">
+          <mat-form-field class="input-field">
+            <mat-label>Link da Imagem</mat-label>
+            <input [(ngModel)]="produto.img" name="img" matInput placeholder="Link da imagem">
+          </mat-form-field>
+        </div>
+  
+        <div class="input-container">
+          <mat-form-field class="input-field">
+            <mat-label>Detalhes da Garantia</mat-label>
+            <input [(ngModel)]="produto.detalhesGarantia" name="detalhesGarantia" matInput placeholder="Detalhes da Garantia">
+          </mat-form-field>
+        </div>
+        <div class="input-container">
+        <mat-label>Selecione uma Categoria</mat-label>
+        <mat-select [(value)]="categoriaValue.id" (selectionChange)="trocarCategoria($event)" name="categoriaSelecionada" class="input-field">
+            <mat-option *ngFor="let categoria of listaCategoria" [value]="categoria.id">{{ categoria.nome }}</mat-option>
+        </mat-select>
+        </div >
+
+        <button mat-raised-button color="primary" (click)="save()">Salvar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="product-container" *ngIf="user.tipo == 'cliente'">
+    <img src="{{produto.img}}" alt="Produto" class="product-image">
+    <div class="product-details">
+      <h2>{{produto.nome}}</h2>
+      <p class="product-description">{{produto.descricao}}</p>
+      <p class="product-price">R${{produto.valor}}</p>
+      <div class="product-rating" (click)="avaliar = true">
+        Avaliação: {{avaliacao}}/5
+      </div>
+      <mat-form-field class="input-field" *ngIf="avaliar">
+        <mat-label>Nota do Produto (entre 1 e 5)</mat-label>
+        <input type="number"[(ngModel)]="nota" name="nota" matInput placeholder="nota">
+        <button mat-button color="primary" (click)="avaliation()">avaliar</button>
+      </mat-form-field>
+      <button mat-raised-button color="primary" class="buy-button">Comprar</button>
+    </div>
+  </mat-card>
+  

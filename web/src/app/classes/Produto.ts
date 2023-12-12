@@ -10,6 +10,6 @@ export class Produto{
     estoque: number;
     avaliacao: number;
     detalhesGarantia: string;
-    fornecedor: Fornecedor;
-    categoria: Categoria;
+    idFornecedor: number;
+    idCategoria: number;
 }

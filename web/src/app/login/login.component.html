@@ -12,6 +12,7 @@
       </mat-card-content>
 
       <button mat-button color="primary" (click)="usuario == 'Cliente' ? usuario = 'Fornecedor' : usuario = 'Cliente'">Entrar como {{usuario == 'Cliente' ? 'Fornecedor' : 'Cliente'}}</button>
+      <button mat-button color="primary" (click)="signar.emit()">Criar conta</button>
     </mat-card>
   </div>
   

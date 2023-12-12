@@ -1,0 +1,101 @@
+/* Adicione esses estilos ao seu arquivo de estilo global ou ao estilo do componente */
+
+.form-container {
+  width: 80%; /* Ajuste conforme necessário */
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.horizontal-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.input-container {
+  flex-basis: calc(70% - 10px); /* Ajuste conforme necessário */
+  margin-bottom: 20px;
+}
+
+.input-field {
+  width: 100%;
+}
+
+button {
+  margin-left: 50%;
+  margin-top: 20px;
+}
+
+/* Adicione um estilo hover para o botão, se desejar */
+button:hover {
+  background-color: blue; /* Cor de destaque ao passar o mouse */
+}
+.irado-selector {
+  background-color: #f44336; /* Cor de fundo vermelha */
+  color: #ffffff; /* Cor do texto branca */
+  padding: 10px 20px; /* Espaçamento interno */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Cantos arredondados */
+  cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+  transition: background-color 0.3s ease; /* Efeito de transição suave */
+
+  /* Efeito de sombra ao passar o mouse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  /* Estilo hover */
+  &:hover {
+    background-color: #e57373; /* Cor de fundo vermelha mais clara */
+  }
+}
+.product-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  padding: 20px;
+}
+
+.product-image {
+  width: 200px;
+  border-radius: 8px;
+  margin-right: 20px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-details h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.product-description {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  color: #e44d26;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.product-rating {
+  color: #ffd700;
+  margin-bottom: 10px;
+}
+
+.buy-button {
+  background-color: #e44d26;
+  color: #fff;
+}
+
+.buy-button:hover {
+  background-color: #d0411e;
+}

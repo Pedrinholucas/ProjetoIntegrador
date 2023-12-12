@@ -57,6 +57,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
 import { SetupComponent } from './login/setup.component';
 import { ClienteComponent } from './cliente/cliente.component';
+import { FormProdutoComponent } from './produto/form-produto/form-produto.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ClienteComponent } from './cliente/cliente.component';
     NavBarComponent,
     LoginComponent,
     SetupComponent,
-    ClienteComponent
+    ClienteComponent,
+    FormProdutoComponent
   ],
   imports: [
     BrowserModule,

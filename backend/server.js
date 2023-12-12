@@ -36,6 +36,30 @@ app.get('/produto', function(req, res) {
         res.send(result)
     });
 });
+app.post('/produto', (req, res) => {
+    console.log(req.body)
+    con.query('USE EmporioDonaMaria;');
+    con.query('INSERT INTO Produto (nome, valor, descricao, estoque, detalhesGarantia, idFornecedor, idCategoria) values ('+req.body.str+');', function (err, result) {
+        if (err) {
+            res.send('deu erro kkkkkkkkkkkkk '+err.code)
+            throw err;
+        }
+        console.log(result)
+        res.send(result)
+    });
+})
+app.put('/produto', function(req, res) {
+    con.query('USE EmporioDonaMaria;');
+    con.query(`update produto set nome = '${req.body.nome}', img = '${req.body.img}', valor = ${req.body.valor}, descricao = '${req.body.descricao}', estoque = ${req.body.estoque}, detalhesGarantia = '${req.body.detalhesGarantia}', idFornecedor = ${req.body.idFornecedor}, idCategoria = ${req.body.idCategoria} where id = ${req.body.id}`, function (err, result) {
+        if (err) {
+            res.send('Ocorreu um erro: ' + err.code);
+            throw err;
+        }
+        console.log(result);
+        res.send(result);
+    });
+});
+
 
 
 app.get('/cliente', function(req, res) {
@@ -53,6 +77,17 @@ app.post('/cliente/login', (req, res) => {
     console.log(req.body)
     con.query('USE EmporioDonaMaria;');
     con.query(`select * from cliente where email = '${req.body.email}' and senha = '${req.body.senha}'`, function (err, result) {
+        if (err) {
+            res.send('deu erro kkkkkkkkkkkkk '+err.code)
+            throw err;
+        }
+        console.log(result)
+        res.send(result)
+    });
+})
+app.post('/cliente', (req, res) => {
+    con.query('USE EmporioDonaMaria;');
+    con.query('insert into cliente (cpf, nome, senha, email, telefone) values ('+req.body.str+');', function (err, result) {
         if (err) {
             res.send('deu erro kkkkkkkkkkkkk '+err.code)
             throw err;
@@ -97,6 +132,18 @@ app.post('/fornecedor/login', (req, res) => {
         res.send(result)
     });
 })
+app.post('/fornecedor', (req, res) => {
+    con.query('USE EmporioDonaMaria;');
+    con.query('insert into fornecedor (cnpj, nome, email, senha) values ('+req.body.str+');', function (err, result) {
+        if (err) {
+            res.send('deu erro kkkkkkkkkkkkk '+err.code)
+            throw err;
+        }
+        console.log(result)
+        res.send(result)
+    });
+})
+
 app.get('/encomenda', function(req, res) {
     con.query('USE EmporioDonaMaria;');
     con.query('SELECT * FROM Encomenda;', function (err, result) {
@@ -110,6 +157,16 @@ app.get('/encomenda', function(req, res) {
 });
 app.get('/categoria', function(req, res) {
     con.query('USE EmporioDonaMaria;');
+    if(Object.keys(req.query).length != 0){
+        con.query("SELECT * FROM Categoria where id = '"+req.query.id+"';", function (err, result) {
+            if (err) {
+                res.send('Ocorreu um erro: ' + err.code);
+                throw err;
+            }
+            console.log(result[0]);
+            res.send(result[0]);
+        });
+    }else
     con.query('SELECT * FROM Categoria;', function (err, result) {
         if (err) {
             res.send('Ocorreu um erro: ' + err.code);
@@ -145,7 +202,6 @@ app.post('/transportadora', (req, res) => {
 })
 
 app.post('/filtrarProdutos', (req, res) => {
-    console.log(req.body)
     con.query('USE EmporioDonaMaria;');
     if(req.body.tipo == 'cliente')
     con.query(`select * from produto where idCategoria in (select idCategoria from Interesses where idCliente = ${req.body.id})`, function (err, result) {
@@ -153,18 +209,39 @@ app.post('/filtrarProdutos', (req, res) => {
             res.send('deu erro kkkkkkkkkkkkk '+err.code)
             throw err;
         }
-        console.log(result)
         res.send(result)
     });
     else
-    con.query(`select * from produto where idCategoria in (select idCategoria from Interesses where idCliente = ${req.body.id})`, function (err, result) {
+    con.query(`select * from produto where idFornecedor = ${req.body.id}`, function (err, result) {
+        if (err) {
+            res.send('deu erro kkkkkkkkkkkkk '+err.code)
+            throw err;
+        }
+        res.send(result)
+    })
+})
+
+app.get('/avaliacao', function(req, res) {
+    con.query('USE EmporioDonaMaria;');
+    con.query('SELECT sum(numero) as sum, count(id) as count FROM Avaliacao where idProduto = '+req.query.id+';', function (err, result) {
+        if (err) {
+            res.send('Ocorreu um erro: ' + err.code);
+            throw err;
+        }
+        console.log(result);
+        res.send(result);
+    });
+});
+app.post('/avaliacao', (req, res) => {
+    con.query('USE EmporioDonaMaria;');
+    con.query('insert into avaliacao (numero, idProduto) values ('+req.body.numero+', '+req.body.idProduto+');', function (err, result) {
         if (err) {
             res.send('deu erro kkkkkkkkkkkkk '+err.code)
             throw err;
         }
         console.log(result)
         res.send(result)
-    })
+    });
 })
 
 app.listen(door, () => {

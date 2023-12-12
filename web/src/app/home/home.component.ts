@@ -3,6 +3,7 @@ import {Produto} from '../classes/Produto';
 import {ProdutoService} from '../produto.service';
 import {isPlatformBrowser} from "@angular/common";
 import axios from 'axios';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent {
   produtos: Produto[] = [];
   isBrowser: any;
   user: any;
-  constructor(public service: ProdutoService, @Inject(PLATFORM_ID) private platformId) {
+  constructor(public service: ProdutoService, @Inject(PLATFORM_ID) private platformId, public router: Router) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
 
@@ -22,8 +23,7 @@ export class HomeComponent {
     if (this.isBrowser){
       // @ts-ignore
       this.user = JSON.parse(localStorage.getItem('user'));
-      console.log(this.user)
-      this.produtos = (await axios.post('localhost:3001/filtrarProdutos', this.user)).data
+      this.produtos = (await axios.post('http://localhost:3001/filtrarProdutos', this.user)).data
     } 
   }
 

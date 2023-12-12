@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import axios from 'axios';
 import { AppComponent } from '../app.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -10,6 +11,7 @@ import { AppComponent } from '../app.component';
 export class LoginComponent {
   constructor() { }
   @Output() login = new EventEmitter()
+  @Output() signar = new EventEmitter()
   email: string = 'carlos@email.com';
   senha: string = 'senha111';
   usuario: string = 'Cliente'

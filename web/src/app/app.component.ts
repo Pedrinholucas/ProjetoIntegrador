@@ -18,10 +18,12 @@ export class AppComponent {
     console.log('cu')
     this.sidenavOpened = !this.sidenavOpened;
   }
-  fazerSexo(a: any){
+  fazerSexo(a?: any){
     this.logar = false;
-    user = a
+    if(a){
+      user = a
     this.usuario = user
+    }
     console.log(this.logar)
   }
 }

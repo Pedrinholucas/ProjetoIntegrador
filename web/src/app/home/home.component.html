@@ -1,6 +1,6 @@
 <div class="container" style="margin-left: 5%;">
-    <mat-grid-list cols="4" gutterSize="50px">
-      <mat-grid-tile *ngFor="let produto of produtos">
+    <mat-grid-list cols="4" gutterSize="1px">
+      <mat-grid-tile *ngFor="let produto of produtos" (click)="service.produto = produto; router.navigate(['produto'])">
         <!-- Conteúdo do produto aqui -->
         <div class="card">
           <img class="card-img-top" style="width: 100%; max-height: 1%;" src="{{produto.img}}" alt="é mentira">
@@ -14,3 +14,4 @@
       </mat-grid-tile>
     </mat-grid-list>
   </div>
+  <button style="margin-left: 47%;" *ngIf="user.tipo == 'fornecedor'" mat-raised-button color="primary" (click)="service.produto = null; router.navigate(['produto'])">Adicionar produto</button>

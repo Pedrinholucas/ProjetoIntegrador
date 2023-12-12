@@ -1,1 +1,52 @@
-<p>setup works!</p>
+<mat-card class="signup-container" >
+    <mat-card-title>Cadastro de  {{client ? 'Cliente' : 'Fornecedor'}}</mat-card-title>
+    <mat-card-content *ngIf="client">
+      <form>
+        <mat-form-field class="input-field">
+          <input matInput placeholder="Nome" [(ngModel)]="cliente.nome" name="nome" required>
+        </mat-form-field>
+  
+        <mat-form-field class="input-field">
+          <input matInput placeholder="E-mail" [(ngModel)]="cliente.email" name="email" type="email" required>
+        </mat-form-field>
+  
+        <mat-form-field class="input-field">
+          <input matInput placeholder="Telefone" [(ngModel)]="cliente.telefone" name="telefone" required>
+        </mat-form-field>
+  
+        <mat-form-field class="input-field">
+          <input matInput placeholder="CPF" [(ngModel)]="cliente.cpf" name="cpf" required>
+        </mat-form-field>
+  
+        <mat-form-field class="input-field">
+          <input matInput placeholder="Senha" [(ngModel)]="cliente.senha" name="senha" type="password" required>
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" (click)="cadastrar()">Cadastrar</button>
+      </form>
+    </mat-card-content>
+  <mat-card-content *ngIf="!client">
+    <form>
+      <mat-form-field class="input-field">
+        <input matInput placeholder="Nome" [(ngModel)]="fornecedor.nome" name="nome" required>
+      </mat-form-field>
+
+      <mat-form-field class="input-field">
+        <input matInput placeholder="E-mail" [(ngModel)]="fornecedor.email" name="email" type="email" required>
+      </mat-form-field>
+
+      <mat-form-field class="input-field">
+        <input matInput placeholder="CNPJ" [(ngModel)]="fornecedor.cnpj" name="cnpj" required>
+      </mat-form-field>
+
+      <mat-form-field class="input-field">
+        <input matInput placeholder="Senha" [(ngModel)]="fornecedor.senha" name="senha" type="password" required>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" (click)="cadastrar()">Cadastrar</button>
+    </form>
+</mat-card-content>
+<button mat-button color="primary" (click)="client = !client">Entrar como {{client ? 'Fornecedor' : 'Cliente'}}</button>
+</mat-card>
+
+  

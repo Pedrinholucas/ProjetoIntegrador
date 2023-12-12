@@ -20,6 +20,6 @@
   </mat-sidenav>
   <mat-sidenav-content>
       <router-outlet *ngIf="!logar"/>
-      <login (login)="fazerSexo($event)" *ngIf="logar"></login>
+      <login (login)="fazerSexo($event)" (signar)="fazerSexo(); router.navigate(['signup'])" *ngIf="logar"></login>
   </mat-sidenav-content>
 </mat-sidenav-container>

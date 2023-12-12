@@ -3,6 +3,6 @@ export class Cliente{
     cpf: number;
     nome: string;
     email: string;
+    senha: string;
     telefone: number;
-    interesses: string[];
 }
