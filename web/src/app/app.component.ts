@@ -22,6 +22,7 @@ export class AppComponent {
     this.logar = false;
     user = a
     this.usuario = user
+    console.log(this.logar)
   }
 }
 export let user: any = ''

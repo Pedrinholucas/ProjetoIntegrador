@@ -69,14 +69,6 @@ FOREIGN KEY (idCliente) REFERENCES Cliente(id),
 FOREIGN KEY (idCategoria) REFERENCES Categoria(id)
 ); 
 
-CREATE TABLE Preferencias(
-id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-idCliente INT,
-idCategoria INT,
-FOREIGN KEY (idCliente) REFERENCES Cliente(id),
-FOREIGN KEY (idCategoria) REFERENCES Categoria(id)
-);
-
 create table FornecedorTrans(
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 idFornecedor INT,
@@ -185,3 +177,9 @@ VALUES
 (8,8,8),
 (9,9,9),
 (10,10,10);
+
+
+#ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '1234';
+
+#flush privileges;
+

@@ -144,7 +144,28 @@ app.post('/transportadora', (req, res) => {
     });
 })
 
-
+app.post('/filtrarProdutos', (req, res) => {
+    console.log(req.body)
+    con.query('USE EmporioDonaMaria;');
+    if(req.body.tipo == 'cliente')
+    con.query(`select * from produto where idCategoria in (select idCategoria from Interesses where idCliente = ${req.body.id})`, function (err, result) {
+        if (err) {
+            res.send('deu erro kkkkkkkkkkkkk '+err.code)
+            throw err;
+        }
+        console.log(result)
+        res.send(result)
+    });
+    else
+    con.query(`select * from produto where idCategoria in (select idCategoria from Interesses where idCliente = ${req.body.id})`, function (err, result) {
+        if (err) {
+            res.send('deu erro kkkkkkkkkkkkk '+err.code)
+            throw err;
+        }
+        console.log(result)
+        res.send(result)
+    })
+})
 
 app.listen(door, () => {
     console.log('aberto na porta '+door)

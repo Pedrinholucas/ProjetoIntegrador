@@ -24,6 +24,7 @@ export class LoginComponent {
       if(req.data[0]){
         req.data[0].tipo = 'cliente'
         this.login.emit(req.data[0])
+        localStorage.setItem('user', JSON.stringify(req.data[0]))
       }
       else
       alert('Cliente não encontrado')
@@ -32,7 +33,8 @@ export class LoginComponent {
       console.log(req.data)
       if(req.data[0]){
         req.data[0].tipo = 'fornecedor'
-        this.login.emit(req.data[0])
+        this.login.emit('fornecedor')
+        localStorage.setItem('user', JSON.stringify(req.data[0]))
       }
       else
       alert('Fornecedor não encontrado')      
