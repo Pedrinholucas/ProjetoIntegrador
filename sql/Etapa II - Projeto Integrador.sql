@@ -18,7 +18,6 @@ cnpj BIGINT,
 nome VARCHAR(255),
 email VARCHAR(63),
 senha Varchar(31),
-avaliacao FLOAT(1)
 );
 
 CREATE TABLE Transportadora(
@@ -36,10 +35,9 @@ descricao VARCHAR(2047)
 CREATE TABLE Produto(
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 nome VARCHAR(255),
-valor FLOAT(2),
+valor FLOAT,
 descricao VARCHAR(2047),
 quantidadeEstoque INT,
-avaliacao FLOAT(1),
 detalhesGarantia VARCHAR(2047),
 idFornecedor INT,
 idCategoria INT,
@@ -47,12 +45,19 @@ FOREIGN KEY (idFornecedor) REFERENCES Fornecedor(id),
 FOREIGN KEY (idCategoria) REFERENCES Categoria(id)
 );
 
+CREATE TABLE Avaliacao(
+id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+numero FLOAT,
+idProduto INT,
+FOREIGN KEY (idProduto) REFERENCES Produto(id)
+);
+
 CREATE TABLE Encomenda(
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 enderecoEntrega VARCHAR(255),
 formaPagamento VARCHAR(63),
-frete FLOAT(2),
-valorTotal FLOAT(2),
+frete FLOAT,
+valorTotal FLOAT,
 dataAquisicao DATE,
 dataEntrega DATE,
 idCliente INT,
@@ -150,6 +155,19 @@ VALUES
 ('tabuleiro de xadres', 49.00, 'Tabuleiro de xadres convencional', 70, 5, 'Possui garantia de 1 ano para falhas de fabrica e danos durante o transporte', 9, 9),
 ('action figure: Big Daddy - Bioshock', 900.00, 'Figure figma 15 cm com 3 variações de rosto', 3, 5, 'Possui garantia de 5 meses para falhas de fabrica e danos durante o transporte', 10, 10)
 ;
+
+INSERT INTO Avaliacao(numero, idProduto)
+VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5),
+(6,6),
+(7,7),
+(8,8),
+(9,9),
+(10,10);
 
 INSERT INTO Encomenda (enderecoEntrega, formaPagamento, frete, valorTotal, dataAquisicao, dataEntrega, idCliente, idTransportadora) 
 VALUES
