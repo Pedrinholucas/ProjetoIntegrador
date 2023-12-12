@@ -165,6 +165,32 @@ VALUES
 ('Rua J, 890', 'Transferência', 10.00, 910.00, '2023-05-10', '2023-05-14', 10, 5)
 ;
 
+INSERT INTO Interesses (idCliente, idCategoria)
+VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5),
+(6,6),
+(7,7),
+(8,8),
+(9,9),
+(10,10);
+
+INSERT INTO TornecedorTrans (idFornecedor, idTransportadora)
+VALUES
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5),
+(6,6),
+(7,7),
+(8,8),
+(9,9),
+(10,10);
+
 INSERT INTO Reconhecimento (quantidade, idProduto, idEncomenda)
 VALUES
 (1,1,1),
