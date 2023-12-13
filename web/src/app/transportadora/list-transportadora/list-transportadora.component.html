@@ -1,0 +1,26 @@
+<mat-card class="transportadoras-container">
+    <mat-card-title>Lista de Transportadoras</mat-card-title>
+    <mat-card-content>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>CNPJ</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transportadora of transportadoras">
+            <td>{{ transportadora.nome }}</td>
+            <td>{{ transportadora.cnpj }}</td>
+            <td>
+              <button mat-raised-button color="primary" (click)="service.transportadora = transportadora; router.navigate(['transportadora'])">Editar</button>
+              <button mat-raised-button color="warn" (click)="excluirTransportadora(transportadora)">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+    <button mat-raised-button color="primary" (click)="adicionarTransportadora()">Adicionar Transportadora</button>
+  </mat-card>
+  

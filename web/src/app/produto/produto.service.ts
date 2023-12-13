@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
-import { Produto } from './classes/Produto';
+import { Produto } from '../classes/Produto';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProdutoService {
-
   produto: Produto | null;
   constructor(public router: Router) { }
 
@@ -21,15 +20,28 @@ export class ProdutoService {
     return (a.data);
   }
 
+  async getTransportadora(){
+    let a =await axios.get('http://localhost:3001/transportadora')
+    return (a.data);
+  }
+
   async getUniqueCategoria(idCategoria: number){
-    let params = {id: idCategoria}
+    let params = {id: idCategoria};
     console.log(params)
     let a = await axios.get('http://localhost:3001/categoria', { params })
     return (a.data);
   }
 
+  
+  async getUniqueTransportadora(id: number){
+    let params = { id }
+    console.log(params)
+    let a = await axios.get('http://localhost:3001/transportadora', { params })
+    return (a.data);
+  }
+
   salvar(produto: Produto) {
-    let str = `'${produto.nome}', ${produto.valor}, '${produto.descricao}', ${produto.estoque}, '${produto.detalhesGarantia}', ${produto.idFornecedor}, ${produto.idCategoria}`
+    let str = `'${produto.nome}', ${produto.valor}, '${produto.descricao}', ${produto.estoque}, '${produto.detalhesGarantia}', ${produto.idFornecedor}, ${produto.idCategoria}, ${produto.idTransportadora}`
     console.log(str)
     if(!produto.id)
     axios.post('http://localhost:3001/produto', {str})

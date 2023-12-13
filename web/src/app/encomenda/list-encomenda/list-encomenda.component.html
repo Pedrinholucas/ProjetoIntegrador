@@ -1,0 +1,27 @@
+<mat-card class="encomendas-container">
+    <mat-card-title>Lista de Encomendas</mat-card-title>
+    <mat-card-content>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Data de Aquisição</th>
+            <th>Data de Entrega</th>
+            <th>Total</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let encomenda of encomendas">
+            <td>{{ encomenda.dataAquisicao | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ encomenda.dataEntrega | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ encomenda.valorTotal | currency:'BRL' }}</td>
+            <td>
+              <button mat-raised-button color="primary" (click)="service.encomenda = encomenda; service.editando = true; router.navigate(['encomenda'])">Editar</button>
+              <button mat-raised-button color="warn" (click)="excluirEncomenda(encomenda)">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+  

@@ -1,0 +1,16 @@
+<div class="container" style="margin-left: 5%;">
+    <mat-grid-list cols="4" gutterSize="1px">
+      <mat-grid-tile *ngFor="let produto of produtos" (click)="produto.quantidade = 1; service.encomenda.produtos.push(produto); router.navigate(['encomenda'])">
+        <!-- Conteúdo do produto aqui -->
+        <div class="card">
+          <img class="card-img-top" style="width: 100%; max-height: 1%;" src="{{produto.img}}" alt="é mentira">
+          <div class="card-body">
+            <p class="card-text">{{produto.nome}}</p>
+            <h5 class="card-title">{{produto.descricao}}</h5>
+            <p class="card-text" style="font-style: italic;">{{produto.valor}} R$</p>
+            <!-- Adicione mais informações conforme necessário -->
+          </div>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>

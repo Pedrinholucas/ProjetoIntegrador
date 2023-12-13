@@ -1,0 +1,30 @@
+<mat-card class="encomenda-container">
+    <mat-card-title>Minha Encomenda</mat-card-title>
+    <mat-card-content>
+      <div *ngFor="let produto of encomenda.produtos; let i = index" class="produto-item">
+        <img src="{{produto.img}}" alt="produto">
+        <p>{{ produto.nome }}</p>
+        <p>Quantidade: {{ produto.quantidade }}<button (click)="subtrairUnidade(i)">-</button><button (click)="adicionarUnidade(i)">+</button></p>
+        <p>R$ {{produto.valor}}</p>
+        
+      </div>
+  
+      <button mat-raised-button color="primary" (click)="adicionarNovoProduto()">Adicionar Novo Produto</button>
+    
+      <mat-form-field class="input-field">
+        <mat-label>Endereco</mat-label>
+        <input [(ngModel)]="encomenda.endereco" name="endereco" matInput placeholder="Rua exemplo n.123" required>
+      </mat-form-field>
+      <div class="input-container">
+      <mat-label>Forma de pagamento</mat-label>
+      <mat-select [(value)]="encomenda.formaPagamento" (selectionChange)="encomenda.formaPagamento = $event.value" name="categoriaSelecionada" class="input-field">
+          <mat-option value="Boleto">Boleto</mat-option>
+          <mat-option value="Transferência">Transferência</mat-option>
+          <mat-option value="Cartão">Cartão</mat-option>
+      </mat-select>
+      </div>
+    </mat-card-content>
+    <button mat-raised-button color="primary" (click)="salvar()">Salvar</button>
+
+  </mat-card>
+  

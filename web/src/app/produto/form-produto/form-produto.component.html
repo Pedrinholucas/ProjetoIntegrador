@@ -42,6 +42,12 @@
             <mat-option *ngFor="let categoria of listaCategoria" [value]="categoria.id">{{ categoria.nome }}</mat-option>
         </mat-select>
         </div >
+        <div class="input-container">
+          <mat-label>Selecione uma Transportadora</mat-label>
+          <mat-select [(value)]="transValue.id" (selectionChange)="trocarTransportadora($event)" name="transValue" class="input-field">
+              <mat-option *ngFor="let transportadora of listaTransportadoras" [value]="transportadora.id">{{ transportadora.nome }}</mat-option>
+          </mat-select>
+          </div >
 
         <button mat-raised-button color="primary" (click)="save()">Salvar</button>
       </form>
@@ -62,7 +68,7 @@
         <input type="number"[(ngModel)]="nota" name="nota" matInput placeholder="nota">
         <button mat-button color="primary" (click)="avaliation()">avaliar</button>
       </mat-form-field>
-      <button mat-raised-button color="primary" class="buy-button">Comprar</button>
+      <button mat-raised-button color="primary" (click)="comprar()"class="buy-button">Comprar</button>
     </div>
   </mat-card>
   
