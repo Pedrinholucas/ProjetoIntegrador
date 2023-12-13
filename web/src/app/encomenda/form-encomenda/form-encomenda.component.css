@@ -1,0 +1,21 @@
+.encomenda-container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .produto-item {
+    margin-bottom: 20px;
+  }
+  .input-container {
+    flex-basis: calc(70% - 10px); /* Ajuste conforme necessário */
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    width: 100%;
+  }
+  

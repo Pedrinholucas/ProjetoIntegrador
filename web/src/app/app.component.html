@@ -1,25 +1,14 @@
 <mat-toolbar color="primary">
-   <button mat-icon-button (click)="sidenav.toggle()">
-    <mat-icon>menu</mat-icon>
+   <button mat-icon-button (click)="caminhao()">
+    <mat-icon>local_shipping</mat-icon>
    </button>
-   <span>Seu Site</span>
-   <mat-form-field class="search-field" style="margin-left: 60%; margin-right: 20%;">
-     <mat-label>Pesquisar</mat-label>
-     <input matInput placeholder="Digite aqui">
-   </mat-form-field>
-   <button mat-icon-button *ngIf="usuario.tipo == 'cliente'" (click)="router.navigate(['cliente'])">
+   <span (click)="router.navigate([''])">Empório Dona Maria</span>
+   <button mat-icon-button style="margin-left: auto;" *ngIf="usuario.tipo == 'cliente'" (click)="router.navigate(['cliente'])">
     <mat-icon>person</mat-icon>
    </button>
-   <button mat-button *ngIf="!usuario" (click)="logar = true">
+   <button style="margin-left: auto;"mat-button *ngIf="!usuario.tipo" (click)="logar = true">
     logar
    </button>
 </mat-toolbar>
-<mat-sidenav-container >
-  <mat-sidenav style="padding: 2%;" #sidenav mode="side">
-    <nav-bar/>
-  </mat-sidenav>
-  <mat-sidenav-content>
-      <router-outlet *ngIf="!logar"/>
-      <login (login)="fazerSexo($event)" (signar)="fazerSexo(); router.navigate(['signup'])" *ngIf="logar"></login>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<router-outlet *ngIf="!logar"/>
+<login (login)="fazerSexo($event)" (signar)="fazerSexo(); router.navigate(['signup'])" *ngIf="logar"></login>

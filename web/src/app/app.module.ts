@@ -58,6 +58,11 @@ import { LoginComponent } from './login/login.component';
 import { SetupComponent } from './login/setup.component';
 import { ClienteComponent } from './cliente/cliente.component';
 import { FormProdutoComponent } from './produto/form-produto/form-produto.component';
+import { FormEncomendaComponent } from './encomenda/form-encomenda/form-encomenda.component';
+import { ListEncomendaComponent } from './encomenda/list-encomenda/list-encomenda.component';
+import { AdicionarProdutoComponent } from './adicionar-produto/adicionar-produto.component';
+import { FormTransportadoraComponent } from './transportadora/form-transportadora/form-transportadora.component';
+import { ListTransportadoraComponent } from './transportadora/list-transportadora/list-transportadora.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +72,12 @@ import { FormProdutoComponent } from './produto/form-produto/form-produto.compon
     LoginComponent,
     SetupComponent,
     ClienteComponent,
-    FormProdutoComponent
+    FormProdutoComponent,
+    FormEncomendaComponent,
+    ListEncomendaComponent,
+    AdicionarProdutoComponent,
+    FormTransportadoraComponent,
+    ListTransportadoraComponent
   ],
   imports: [
     BrowserModule,

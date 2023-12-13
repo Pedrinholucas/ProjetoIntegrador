@@ -8,9 +8,9 @@ export class Encomenda{
     formaPagamento: string;
     frete: number;
     valorTotal: number;
-    dataAquisicao: Date;
-    dataEntrega: Date;
-    cliente: Cliente;
-    transportadora: Transportadora;
+    dataAquisicao: string | Date;
+    dataEntrega: string | Date;
+    idCliente: number;
+    idTransportadora: number;
     produtos: Produto[]
 }

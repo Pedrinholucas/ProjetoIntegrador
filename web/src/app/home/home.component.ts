@@ -1,6 +1,6 @@
 import {Component, Inject, PLATFORM_ID} from '@angular/core';
 import {Produto} from '../classes/Produto';
-import {ProdutoService} from '../produto.service';
+import {ProdutoService} from '../produto/produto.service';
 import {isPlatformBrowser} from "@angular/common";
 import axios from 'axios';
 import { Router } from '@angular/router';
@@ -24,6 +24,7 @@ export class HomeComponent {
       // @ts-ignore
       this.user = JSON.parse(localStorage.getItem('user'));
       this.produtos = (await axios.post('http://localhost:3001/filtrarProdutos', this.user)).data
+      console.log(this.produtos)
     } 
   }
 

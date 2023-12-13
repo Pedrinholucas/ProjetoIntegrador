@@ -1,0 +1,17 @@
+<mat-card class="form-transportadora">
+    <mat-card-title>Formulário de Transportadora</mat-card-title>
+    <mat-card-content>
+      <form>
+        <mat-form-field class="input-field">
+          <input [(ngModel)]="transportadora.nome" name="nome" matInput placeholder="Nome da Transportadora" required>
+        </mat-form-field>
+  
+        <mat-form-field class="input-field">
+          <input [(ngModel)]="transportadora.cnpj" name="cnpj" matInput placeholder="CNPJ da Transportadora" required>
+        </mat-form-field>
+  
+        <button mat-raised-button color="primary" (click)="salvarTransportadora()">Salvar</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+  

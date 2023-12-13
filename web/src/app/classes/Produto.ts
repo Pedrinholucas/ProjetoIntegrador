@@ -12,4 +12,6 @@ export class Produto{
     detalhesGarantia: string;
     idFornecedor: number;
     idCategoria: number;
+  quantidade: number;
+  idTransportadora: number;
 }
