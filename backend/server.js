@@ -83,12 +83,19 @@ app.post('/cliente/login', (req, res) => {
 })
 app.post('/cliente', (req, res) => {
     con.query('USE EmporioDonaMaria;');
+    console.log(req.body.str +' cliente')
     con.query('insert into cliente (cpf, nome, senha, email, telefone) values ('+req.body.str+');', function (err, result) {
         if (err) {
-            res.send('deu erro kkkkkkkkkkkkk '+err.code)
+            res.send('deu erro kkkkkkkkkkkkk '+err.code);
             throw err;
         }
-        res.send(result)
+    })
+    con.query('select count(id) as count from cliente;', function (err, result) {
+        if (err) {
+            res.send('deu erro kkkkkkkkkkkkk '+err.code);
+            throw err;
+        }
+        res.send(result[0])
     });
 })
 
@@ -228,7 +235,18 @@ app.post('/transportadora', (req, res) => {
     con.query('USE EmporioDonaMaria;');
     con.query('insert into transportadora (nome, cnpj) values ('+req.body.str+');', function (err, result) {
         if (err) {
-            res.send('deu erro kkkkkkkkkkkkk '+err.code)
+            res.send('deu erro kkkkkkkkkkkkk '+err.code);
+            throw err;
+        }
+        res.send(result);
+    });
+})
+app.post('/interesse', (req, res) => {
+    con.query('USE EmporioDonaMaria;');
+    console.log(req.body.str)
+    con.query('insert into interesses (idCliente, idCategoria) values ('+req.body.str+');', function (err, result) {
+        if (err) {
+            res.send('deu erro kkkkkkkkkkkkk '+err.code);
             throw err;
         }
         res.send(result)

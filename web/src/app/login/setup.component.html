@@ -21,6 +21,13 @@
         <mat-form-field class="input-field">
           <input matInput placeholder="Senha" [(ngModel)]="cliente.senha" name="senha" type="password" required>
         </mat-form-field>
+
+        <div class="input-container">
+          <mat-label>Selecione um Interesse</mat-label>
+          <mat-select (selectionChange)="trocarInteresse($event)" name="categoriaSelecionada" class="input-field">
+              <mat-option *ngFor="let categoria of listaCategoria" [value]="categoria.id">{{ categoria.nome }}</mat-option>
+          </mat-select>
+          </div >
   
         <button mat-raised-button color="primary" (click)="cadastrar()">Cadastrar</button>
       </form>
