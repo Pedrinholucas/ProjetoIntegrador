@@ -6,19 +6,19 @@ public class Produto{
     Double valor;
     String descricao;
     Integer quantidadeEstoque;
-    Double avaliacao;
+    String img;
     String detalhesGarantia;
     Integer codFornecedor;
     Integer codCategoria;
     
     public Produto(Integer codProduto, String nome, Double valor, String descricao, Integer quantidadeEstoque,
-            Double avaliacao, String detalhesGarantia, Integer codFornecedor, Integer codCategoria) {
+            String img, String detalhesGarantia, Integer codFornecedor, Integer codCategoria) {
         this.codProduto = codProduto;
         this.nome = nome;
         this.valor = valor;
         this.descricao = descricao;
         this.quantidadeEstoque = quantidadeEstoque;
-        this.avaliacao = avaliacao;
+        this.img = img;
         this.detalhesGarantia = detalhesGarantia;
         this.codFornecedor = codFornecedor;
         this.codCategoria = codCategoria;
@@ -64,12 +64,12 @@ public class Produto{
         this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public Double getAvaliacao() {
-        return avaliacao;
+    public String getImg() {
+        return img;
     }
 
-    public void setAvaliacao(Double avaliacao) {
-        this.avaliacao = avaliacao;
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getDetalhesGarantia() {
