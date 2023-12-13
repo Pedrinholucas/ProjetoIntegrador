@@ -13,16 +13,13 @@ public class Cliente {
     private List<String> cartoes = new ArrayList<>();
     private String interesses;
     
-    public Cliente(Integer codCliente, Integer cpf, String nome, String senha, String email, Integer telefone,
-            List<String> cartoes, String interesses) {
+    public Cliente(Integer codCliente, Integer cpf, String nome, String senha, String email, Integer telefone) {
         this.codCliente = codCliente;
         this.cpf = cpf;
         this.nome = nome;
         this.senha = senha;
         this.email = email;
         this.telefone = telefone;
-        this.cartoes = cartoes;
-        this.interesses = interesses;
     }
 
     public Integer getCod_cliente() {
@@ -71,22 +68,6 @@ public class Cliente {
 
     public void setTelefone(Integer telefone) {
         this.telefone = telefone;
-    }
-
-    public List<String> getCartoes() {
-        return cartoes;
-    }
-
-    public void setCartoes(List<String> cartoes) {
-        this.cartoes = cartoes;
-    }
-
-    public String getInteresses() {
-        return interesses;
-    }
-
-    public void setInteresses(String interesses) {
-        this.interesses = interesses;
     }
 
     

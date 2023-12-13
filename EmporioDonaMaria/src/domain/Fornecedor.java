@@ -6,18 +6,13 @@ public class Fornecedor {
     private String nome;
     private String email;
     private String senha;
-    private Double avaliacao;
-    private String[] meiosPagamento;
     
-    public Fornecedor(Integer codFornecedor, Integer cnpj, String nome, String email, String senha, Double avaliacao,
-            String[] meiosPagamento) {
+    public Fornecedor(Integer codFornecedor, Integer cnpj, String nome, String email, String senha) {
         this.codFornecedor = codFornecedor;
         this.cnpj = cnpj;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.avaliacao = avaliacao;
-        this.meiosPagamento = meiosPagamento;
     }
 
     public Integer getCodFornecedor() {
@@ -59,22 +54,4 @@ public class Fornecedor {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-    public Double getAvaliacao() {
-        return avaliacao;
-    }
-
-    public void setAvaliacao(Double avaliacao) {
-        this.avaliacao = avaliacao;
-    }
-
-    public String[] getMeiosPagamento() {
-        return meiosPagamento;
-    }
-
-    public void setMeiosPagamento(String[] meiosPagamento) {
-        this.meiosPagamento = meiosPagamento;
-    }
-
-    
 }
