@@ -3,7 +3,7 @@
       <mat-grid-tile *ngFor="let produto of produtos" (click)="service.produto = produto; router.navigate(['produto'])">
         <!-- Conteúdo do produto aqui -->
         <div class="card">
-          <img class="card-img-top" style="width: 100%; max-height: 1%;" src="{{produto.img}}" alt="é mentira">
+          <img class="card-img-top" style="width: 100%; max-height: 250px;" src="{{produto.img}}" alt="é mentira">
           <div class="card-body">
             <p class="card-text">{{produto.nome}}</p>
             <h5 class="card-title">{{produto.descricao}}</h5>
