@@ -7,8 +7,7 @@ public class Fornecedor {
     private String email;
     private String senha;
     
-    public Fornecedor(Integer codFornecedor, Integer cnpj, String nome, String email, String senha) {
-        this.codFornecedor = codFornecedor;
+    public Fornecedor(Integer cnpj, String nome, String email, String senha) {
         this.cnpj = cnpj;
         this.nome = nome;
         this.email = email;
