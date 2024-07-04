@@ -48,7 +48,7 @@ FOREIGN KEY (idCategoria) REFERENCES Categoria(id)
 
 CREATE TABLE Avaliacao(
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-numero FLOAT,
+nota FLOAT,
 idProduto INT,
 FOREIGN KEY (idProduto) REFERENCES Produto(id)
 );
