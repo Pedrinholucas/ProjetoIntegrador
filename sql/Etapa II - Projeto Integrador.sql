@@ -1,4 +1,4 @@
-DROP DATABASE EmporioDonaMaria;
+drop database EmporioDonaMaria;
 CREATE DATABASE EmporioDonaMaria;
 
 USE EmporioDonaMaria;
@@ -17,7 +17,7 @@ id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
 cnpj BIGINT,
 nome VARCHAR(255),
 email VARCHAR(63),
-senha Varchar(31),
+senha Varchar(31)
 );
 
 CREATE TABLE Transportadora(
@@ -48,7 +48,7 @@ FOREIGN KEY (idCategoria) REFERENCES Categoria(id)
 
 CREATE TABLE Avaliacao(
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-numero FLOAT,
+nota FLOAT,
 idProduto INT,
 FOREIGN KEY (idProduto) REFERENCES Produto(id)
 );
@@ -116,8 +116,7 @@ VALUES
 (77777777777777, 'Fornecedor G', 'fornecedor_g@email.com', 'qwerty90'),
 (88888888888888, 'Fornecedor H', 'fornecedor_h@email.com', 'abcd2345'),
 (99999999999999, 'Fornecedor I', 'fornecedor_i@email.com', 'senha123'),
-(10101010101010, 'Fornecedor J', 'fornecedor_j@email.com', 'abcd1234')
-;
+(10101010101010, 'Fornecedor J', 'fornecedor_j@email.com', 'abcd1234');
 
 INSERT INTO Transportadora (nome, cnpj) 
 VALUES
@@ -125,8 +124,7 @@ VALUES
 ('Transportadora Y', '22222222222222'),
 ('Transportadora Z', '33333333333333'),
 ('Transportadora W', '44444444444444'),
-('Transportadora V', '55555555555555')
-;
+('Transportadora V', '55555555555555');
 
 INSERT INTO Categoria (nome, descricao) 
 VALUES
@@ -139,22 +137,20 @@ VALUES
 ('Automóveis', 'Peças e acessórios para automóveis'),
 ('Esportes', 'Artigos esportivos e equipamentos'),
 ('Jogos', 'Jogos de tabuleiro, vídeo games e consoles'),
-('Decoração', 'Objetos de decoração para ambientes')
-;
+('Decoração', 'Objetos de decoração para ambientes');
 
-INSERT INTO Produto (nome, valor, descricao, estoque, detalhesGarantia, idFornecedor, idCategoria)
+INSERT INTO Produto (nome, valor, descricao, estoque, detalhesGarantia, img, idFornecedor, idCategoria)
 VALUES
 ('notebook', 2800.00, 'Notebook da  xuxa', 30, 'Possui garantia de 1 ano para falhas de fabrica e danos durante o transporte','https://th.bing.com/th/id/OIP.NPQJ0deft_aQVqs_mAjCYQHaFj?rs=1&pid=ImgDetMain', 1, 1),
 ('bone do corinthians', 33.00, 'Bone preto com brasão do Corinthian na parte frontal e ajuste de tamanho trazeiro', 54, 'Não possui garantia','https://th.bing.com/th/id/OIP.4g15mli9h30pMOZqkZmjdAHaHa?rs=1&pid=ImgDetMain', 2, 2),
 ('Harry Potter e a Pedra filosofal', 67.00, 'Livro do harry potter capa dura edição JBC 2003', 6, 'Não possui garantia','https://http2.mlstatic.com/D_NQ_NP_835050-MLU50462363202_062022E-O.webp', 3, 3),
 ('pote de marmita', 27.90, 'Vazilha para armazenar comida com 3 repartições', 98, 'Possui garantia de 3 meses para falhas de fabricação','https://lcpshop.net/wp-content/uploads/2022/10/1185796-oap9ne.jpg', 4, 4),
 ('Minoxidil', 60.00, 'Creme anti queda capiar, que estimula o cresimento de cabelo, 500g', 183, 'Não possui garantia','https://www.oficialfarma.com.br/media/catalog/product/m/i/minoxidil-turbinado-100ml-interrompe-a-queda-capilar.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=500&width=480&canvas=480:500', 5, 5),
-('Conjunto de cadeiras', 83.00, 'Conjunto de cadeiras de madeira com 15 unidades', 17,, 'Possui garantia de 6 meses para falhas de fabricação','https://cdn.leroymerlin.com.br/products/kit_8_x_cadeiras_masters_allegra_preto_1567167612_1b7e_600x600.jpg', 6, 6),
+('Conjunto de cadeiras', 83.00, 'Conjunto de cadeiras de madeira com 15 unidades', 17, 'Possui garantia de 6 meses para falhas de fabricação','https://cdn.leroymerlin.com.br/products/kit_8_x_cadeiras_masters_allegra_preto_1567167612_1b7e_600x600.jpg', 6, 6),
 ('capa para volante', 14.99, 'Capa protetora para volante, estampa animal print onça', 47, 'Não possui garantia','https://http2.mlstatic.com/D_NQ_NP_829176-MLB69255696454_052023-O.webp', 7, 7),
 ('bicicleta', 660.00, 'Bicicleta para trilha com 5 marchas', 36, 'Possui garantia de 6 meses para falhas de fabricação','https://http2.mlstatic.com/bicicleta-mongoose-brawler-freestyle-bmx-20-negra-D_NQ_NP_869280-MLM31224003855_062019-F.jpg', 8, 8),
 ('tabuleiro de xadres', 49.00, 'Tabuleiro de xadres convencional', 70, 'Possui garantia de 1 ano para falhas de fabrica e danos durante o transporte','https://http2.mlstatic.com/D_NQ_NP_2X_874476-MLB45837988839_052021-F.webp', 9, 9),
-('action figure: Big Daddy - Bioshock', 900.00, 'Figure figma 15 cm com 3 variações de rosto', 3, 'Possui garantia de 5 meses para falhas de fabrica e danos durante o transporte','https://static3.tcdn.com.br/img/img_prod/460977/boneco_big_daddy_bioshock_2_neca_cg_42062_1_20201211173001.jpg', 10, 10)
-;
+('action figure: Big Daddy - Bioshock', 900.00, 'Figure figma 15 cm com 3 variações de rosto', 3, 'Possui garantia de 5 meses para falhas de fabrica e danos durante o transporte','https://static3.tcdn.com.br/img/img_prod/460977/boneco_big_daddy_bioshock_2_neca_cg_42062_1_20201211173001.jpg', 10, 10);
 
 INSERT INTO Avaliacao(numero, idProduto)
 VALUES
@@ -169,19 +165,18 @@ VALUES
 (9,9),
 (10,10);
 
-INSERT INTO Encomenda (enderecoEntrega, formaPagamento, frete, valorTotal, dataAquisicao, dataEntrega, idCliente, idTransportadora) 
+INSERT INTO Encomenda (enderecoEntrega,  frete, valorTotal, dataAquisicao, dataEntrega, idCliente, idTransportadora) 
 VALUES
-('Rua A, 123', 'Cartão', 10.00, 2810.00, '2023-05-01', '2023-05-05', 1, 1),
-('Rua B, 456', 'Boleto', 00, 38.00, '2023-05-02', '2023-05-06', 2, 2),
-('Rua C, 789', 'Transferência', 7.50, 74.50, '2023-05-03', '2023-05-07', 3, 3),
-('Rua D, 012', 'Boleto', 00, 35.00, '2023-05-04', '2023-05-08', 4, 4),
-('Rua E, 345', 'Cartão', 12.50, 72.50, '2023-05-05', '2023-05-09', 5, 5),
-('Rua F, 678', 'Boleto', 00, 88.00, '2023-05-06', '2023-05-10', 6, 1),
-('Rua G, 901', 'Transferência', 9.50, 23.49, '2023-05-07', '2023-05-11', 7, 2),
-('Rua H, 234', 'Cartão', 6.00, 666.00, '2023-05-08', '2023-05-12', 8, 3),
-('Rua I, 567', 'Boleto', 50, 56.50, '2023-05-09', '2023-05-13', 9, 4),
-('Rua J, 890', 'Transferência', 10.00, 910.00, '2023-05-10', '2023-05-14', 10, 5)
-;
+('Rua A, 123',  10.00, 2810.00, '2023-05-01', '2023-05-05', 1, 1),
+('Rua B, 456', 00, 38.00, '2023-05-02', '2023-05-06', 2, 2),
+('Rua C, 789', 7.50, 74.50, '2023-05-03', '2023-05-07', 3, 3),
+('Rua D, 012', 00, 35.00, '2023-05-04', '2023-05-08', 4, 4),
+('Rua E, 345', 12.50, 72.50, '2023-05-05', '2023-05-09', 5, 5),
+('Rua F, 678', 00, 88.00, '2023-05-06', '2023-05-10', 6, 1),
+('Rua G, 901', 9.50, 23.49, '2023-05-07', '2023-05-11', 7, 2),
+('Rua H, 234', 6.00, 666.00, '2023-05-08', '2023-05-12', 8, 3),
+('Rua I, 567', 50, 56.50, '2023-05-09', '2023-05-13', 9, 4),
+('Rua J, 890', 10.00, 910.00, '2023-05-10', '2023-05-14', 10, 5);
 
 INSERT INTO Interesses (idCliente, idCategoria)
 VALUES
@@ -196,7 +191,7 @@ VALUES
 (9,9),
 (10,10);
 
-INSERT INTO TornecedorTrans (idFornecedor, idTransportadora)
+INSERT INTO FornecedorTrans (idFornecedor, idTransportadora)
 VALUES
 (1,1),
 (2,2),
