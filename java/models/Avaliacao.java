@@ -5,8 +5,7 @@ public class Avaliacao {
     private Float numero;
     private String idProduto;
     
-    public Avaliacao(Integer id, Float numero, String idProduto) {
-        this.id = id;
+    public Avaliacao( Float numero, String idProduto) {
         this.numero = numero;
         this.idProduto = idProduto;
     }
