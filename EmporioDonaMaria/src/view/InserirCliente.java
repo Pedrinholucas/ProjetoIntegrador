@@ -250,7 +250,7 @@ public class InserirCliente extends javax.swing.JFrame {
 
         // Inserir cliente
         Cliente novoCliente = new Cliente();
-        novoCliente.setCpf(Integer.valueOf(cpfInput.getText()));
+        novoCliente.setCpf(cpfInput.getText());
         novoCliente.setNome(nomeInput.getText());
         novoCliente.setSenha(senhaInput.getText());
         novoCliente.setEmail(emailInput.getText());

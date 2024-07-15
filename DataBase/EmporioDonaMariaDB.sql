@@ -5,7 +5,7 @@ USE EmporioDonaMaria;
 
 CREATE TABLE Cliente(
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-cpf BIGINT,
+cpf VARCHAR(255),
 nome VARCHAR(255), 
 senha Varchar(31),
 email VARCHAR(63), 
@@ -14,7 +14,7 @@ telefone INT
 
 CREATE TABLE Fornecedor (
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-cnpj BIGINT,
+cnpj VARCHAR(255),
 nome VARCHAR(255),
 email VARCHAR(63),
 senha Varchar(31)
@@ -22,7 +22,7 @@ senha Varchar(31)
 
 CREATE TABLE Transportadora(
 id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-cnpj BIGINT,
+cnpj VARCHAR(255),
 nome VARCHAR(255)
 );
 
@@ -93,30 +93,30 @@ FOREIGN KEY (idEncomenda) REFERENCES Encomenda(id)
 
 INSERT INTO Cliente (cpf, nome, senha, email, telefone) 
 VALUES
-(11111111111, 'Carlos Santos', 'senha111', 'carlos@email.com', 111111111 ),
-(22222222222, 'Ana Rodrigues', 'senha222', 'ana@email.com', 222222222 ),
-(33333333333, 'Pedro Almeida', 'senha333', 'pedro@email.com', 333333333 ),
-(44444444444, 'Sandra Oliveira', 'senha444', 'sandra@email.com', 444444444 ),
-(55555555555, 'Paulo Santos', 'senha555', 'paulo@email.com', 555555555 ),
-(66666666666, 'Mariana Lima', 'senha666', 'mariana@email.com', 666666666 ),
-(77777777777, 'Lucas Fernandes', 'senha777', 'lucas@email.com', 777777777 ),
-(88888888888, 'Julia Alves', 'senha888', 'julia@email.com', 888888888 ),
-(99999999999, 'João Silva', 'senha123', 'joao@email.com', 999999999 ),
-(10101010101, 'Maria Souza', 'senha000', 'maria@email.com', 101010101)
+('11111111111', 'Carlos Santos', 'senha111', 'carlos@email.com', 111111111 ),
+('22222222222', 'Ana Rodrigues', 'senha222', 'ana@email.com', 222222222 ),
+('33333333333', 'Pedro Almeida', 'senha333', 'pedro@email.com', 333333333 ),
+('44444444444', 'Sandra Oliveira', 'senha444', 'sandra@email.com', 444444444 ),
+('55555555555', 'Paulo Santos', 'senha555', 'paulo@email.com', 555555555 ),
+('66666666666', 'Mariana Lima', 'senha666', 'mariana@email.com', 666666666 ),
+('77777777777', 'Lucas Fernandes', 'senha777', 'lucas@email.com', 777777777 ),
+('88888888888', 'Julia Alves', 'senha888', 'julia@email.com', 888888888 ),
+('99999999999', 'João Silva', 'senha123', 'joao@email.com', 999999999 ),
+('10101010101', 'Maria Souza', 'senha000', 'maria@email.com', 101010101)
 ;
 
 INSERT INTO Fornecedor (CNPJ, nome, email, senha) 
 VALUES
-(11111111111111, 'Fornecedor A', 'fornecedor_a@email.com', 'senha5678'),
-(22222222222222, 'Fornecedor B', 'fornecedor_b@email.com', 'abcd9012'),
-(33333333333333, 'Fornecedor C', 'fornecedor_c@email.com', 'qwerty12'),
-(44444444444444, 'Fornecedor D', 'fornecedor_d@email.com', 'senha3456'),
-(55555555555555, 'Fornecedor E', 'fornecedor_e@email.com', 'abcd5678'),
-(66666666666666, 'Fornecedor F', 'fornecedor_f@email.com', 'senha7890'),
-(77777777777777, 'Fornecedor G', 'fornecedor_g@email.com', 'qwerty90'),
-(88888888888888, 'Fornecedor H', 'fornecedor_h@email.com', 'abcd2345'),
-(99999999999999, 'Fornecedor I', 'fornecedor_i@email.com', 'senha123'),
-(10101010101010, 'Fornecedor J', 'fornecedor_j@email.com', 'abcd1234');
+('11111111111111', 'Fornecedor A', 'fornecedor_a@email.com', 'senha5678'),
+('22222222222222', 'Fornecedor B', 'fornecedor_b@email.com', 'abcd9012'),
+('33333333333333', 'Fornecedor C', 'fornecedor_c@email.com', 'qwerty12'),
+('44444444444444', 'Fornecedor D', 'fornecedor_d@email.com', 'senha3456'),
+('55555555555555', 'Fornecedor E', 'fornecedor_e@email.com', 'abcd5678'),
+('66666666666666', 'Fornecedor F', 'fornecedor_f@email.com', 'senha7890'),
+('77777777777777', 'Fornecedor G', 'fornecedor_g@email.com', 'qwerty90'),
+('88888888888888', 'Fornecedor H', 'fornecedor_h@email.com', 'abcd2345'),
+('99999999999999', 'Fornecedor I', 'fornecedor_i@email.com', 'senha123'),
+('10101010101010', 'Fornecedor J', 'fornecedor_j@email.com', 'abcd1234');
 
 INSERT INTO Transportadora (nome, cnpj) 
 VALUES
@@ -152,7 +152,7 @@ VALUES
 ('tabuleiro de xadres', 49.00, 'Tabuleiro de xadres convencional', 70, 'Possui garantia de 1 ano para falhas de fabrica e danos durante o transporte','https://http2.mlstatic.com/D_NQ_NP_2X_874476-MLB45837988839_052021-F.webp', 9, 9),
 ('action figure: Big Daddy - Bioshock', 900.00, 'Figure figma 15 cm com 3 variações de rosto', 3, 'Possui garantia de 5 meses para falhas de fabrica e danos durante o transporte','https://static3.tcdn.com.br/img/img_prod/460977/boneco_big_daddy_bioshock_2_neca_cg_42062_1_20201211173001.jpg', 10, 10);
 
-INSERT INTO Avaliacao(numero, idProduto)
+INSERT INTO Avaliacao(nota, idProduto)
 VALUES
 (5,1),
 (1,1),

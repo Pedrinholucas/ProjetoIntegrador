@@ -5,7 +5,6 @@ import java.time.LocalDate;
 public class Encomenda {
     private Integer codEncomenda;
     private String enderecoEntrega;
-    private String formaPagamento;
     private Double frete;
     private Double valorTotal;
     private LocalDate dataAquisicao;
@@ -13,12 +12,11 @@ public class Encomenda {
     private Cliente cliente;
     private Transportadora transportadora;
 
-    public Encomenda(Integer codEncomenda, String enderecoEntrega, String formaPagamento, Double frete,
+    public Encomenda(Integer codEncomenda, String enderecoEntrega, Double frete,
             Double valorTotal, LocalDate dataAquisicao, LocalDate dataEntrega, Cliente cliente,
             Transportadora transportadora) {
         this.codEncomenda = codEncomenda;
         this.enderecoEntrega = enderecoEntrega;
-        this.formaPagamento = formaPagamento;
         this.frete = frete;
         this.valorTotal = valorTotal;
         this.dataAquisicao = dataAquisicao;
@@ -38,12 +36,6 @@ public class Encomenda {
     }
     public void setEnderecoEntrega(String enderecoEntrega) {
         this.enderecoEntrega = enderecoEntrega;
-    }
-    public String getFormaPagamento() {
-        return formaPagamento;
-    }
-    public void setFormaPagamento(String formaPagamento) {
-        this.formaPagamento = formaPagamento;
     }
     public Double getFrete() {
         return frete;

@@ -5,17 +5,16 @@ import java.util.List;
 
 public class Cliente {
     private Integer codCliente;
-    private Integer cpf;
+    private String cpf;
     private String nome;
     private String senha;
     private String email;
     private Integer telefone;
-    private List<String> cartoes = new ArrayList<>();
     private String interesses;
     
     public Cliente() {}
 
-    public Cliente( Integer cpf, String nome, String senha, String email, Integer telefone) {
+    public Cliente( String cpf, String nome, String senha, String email, Integer telefone) {
         this.cpf = cpf;
         this.nome = nome;
         this.senha = senha;
@@ -31,11 +30,11 @@ public class Cliente {
         this.codCliente = codCliente;
     }
 
-    public Integer getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(Integer cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

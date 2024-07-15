@@ -2,10 +2,10 @@ package models;
 
 public class Transportadora {
     private Integer codTransportadora;
-    private Integer cnpj;
+    private String cnpj;
     private String nome;
     
-    public Transportadora( Integer cnpj, String nome) {
+    public Transportadora( String cnpj, String nome) {
         this.cnpj = cnpj;
         this.nome = nome;
     }
@@ -18,11 +18,11 @@ public class Transportadora {
         this.codTransportadora = codTransportadora;
     }
 
-    public Integer getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(Integer cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
 

@@ -5,12 +5,7 @@
 package view;
 
 
-import connection.ConnectionMySQL;
 import controller.ClienteControle;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
 import models.Cliente;
@@ -203,10 +198,10 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
         Cliente clienteBuscado = clienteControle.buscarClientePorId(2); // ID do cliente a ser buscado
         if (clienteBuscado != null) {
             nomeOutput.setText(clienteBuscado.getNome());                
-            cpfOutput.setText(clienteBuscado.getCpf().toString().toString());                
+            cpfOutput.setText(clienteBuscado.getCpf());                
             emailOutput.setText(clienteBuscado.getEmail());                
             senhaOutput.setText(clienteBuscado.getSenha());                
-            telefoneOutput.setText(clienteBuscado.getTelefone().toString().toString());
+            telefoneOutput.setText(clienteBuscado.getTelefone().toString());
         } else {
             JOptionPane.showMessageDialog(null, "Cliente não encontrado");
         }

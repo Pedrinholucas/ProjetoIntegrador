@@ -23,7 +23,7 @@ public class ClienteControle {
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, cliente.getCpf().toString());
+            stmt.setString(1, cliente.getCpf());
             stmt.setString(2, cliente.getNome());
             stmt.setString(3, cliente.getSenha());
             stmt.setString(4, cliente.getEmail());
@@ -48,17 +48,17 @@ public class ClienteControle {
     }
 
     public boolean atualizarCliente(Cliente cliente) {
-        String sql = "UPDATE cliente SET cpf = ?, nome = ?, senha = ?, email = ?, telefone = ? WHERE id = ?";
+        String sql = "UPDATE cliente SET cpf = ?, nome = ?, senha = ?, email = ?, telefone = ? WHERE cpf = ?";
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, cliente.getCpf().toString());
+            stmt.setString(1, cliente.getCpf());
             stmt.setString(2, cliente.getNome());
             stmt.setString(3, cliente.getSenha());
             stmt.setString(4, cliente.getEmail());
             stmt.setString(5, cliente.getTelefone().toString());
-            stmt.setInt(6, cliente.getCod_cliente());
+            stmt.setString(6, cliente.getCpf());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -78,13 +78,13 @@ public class ClienteControle {
         }
     }
 
-    public boolean deletarCliente(int id) {
-        String sql = "DELETE FROM cliente WHERE id = ?";
+    public boolean deletarCliente(String cpf) {
+        String sql = "DELETE FROM cliente WHERE cpf = ?";
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1, id);
+            stmt.setString(1, cpf);
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -104,20 +104,20 @@ public class ClienteControle {
         }
     }
 
-    public Cliente buscarClientePorId(int id) {
-        String sql = "SELECT * FROM cliente WHERE id = ?";
+    public Cliente buscarClientePorCpf(String cpf) {
+        String sql = "SELECT * FROM cliente WHERE cpf = ?";
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1, id);
+            stmt.setString(1, cpf);
             rs = stmt.executeQuery();
 
             if (rs.next()) {
                 Cliente cliente = new Cliente();
                 cliente.setCod_cliente(rs.getInt("id"));
-                cliente.setCpf( Integer. valueOf(rs.getString("cpf")));
+                cliente.setCpf(rs.getString("cpf"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setSenha(rs.getString("senha"));
                 cliente.setEmail(rs.getString("email"));
@@ -157,7 +157,7 @@ public class ClienteControle {
             while (rs.next()) {
                 Cliente cliente = new Cliente();
                 cliente.setCod_cliente(rs.getInt("id"));
-                cliente.setCpf( Integer. valueOf(rs.getString("cpf")));
+                cliente.setCpf(rs.getString("cpf"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setSenha(rs.getString("senha"));
                 cliente.setEmail(rs.getString("email"));

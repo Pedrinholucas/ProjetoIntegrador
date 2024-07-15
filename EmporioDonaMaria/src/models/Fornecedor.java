@@ -2,14 +2,14 @@ package models;
 
 public class Fornecedor {
     private Integer id;
-    private Integer cnpj;
+    private String cnpj;
     private String nome;
     private String email;
     private String senha;
     
     public Fornecedor() {}
     
-    public Fornecedor(Integer cnpj, String nome, String email, String senha) {
+    public Fornecedor(String cnpj, String nome, String email, String senha) {
         this.cnpj = cnpj;
         this.nome = nome;
         this.email = email;
@@ -24,11 +24,11 @@ public class Fornecedor {
         this.id = id;
     }
 
-    public Integer getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(Integer cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
 

@@ -1,13 +1,13 @@
 package models;
 
-public class FuncionarioTrans {
+public class FornecedorTrans {
     Integer id;
-    Integer idFuncionario; 
+    Integer idFornecedor; 
     Integer idTransportadora;
     
-    public FuncionarioTrans(Integer id, Integer idFuncionario, Integer idTransportadora) {
+    public FornecedorTrans(Integer id, Integer idFornecedor, Integer idTransportadora) {
         this.id = id;
-        this.idFuncionario = idFuncionario;
+        this.idFornecedor = idFornecedor;
         this.idTransportadora = idTransportadora;
     }
     public Integer getid() {
@@ -17,10 +17,10 @@ public class FuncionarioTrans {
         this.id = id;
     }
     public Integer getCliente() {
-        return idFuncionario;
+        return idFornecedor;
     }
-    public void setCliente(Integer idFuncionario) {
-        this.idFuncionario = idFuncionario;
+    public void setCliente(Integer idFornecedor) {
+        this.idFornecedor = idFornecedor;
     }
     public Integer getidTransportadora() {
         return idTransportadora;
