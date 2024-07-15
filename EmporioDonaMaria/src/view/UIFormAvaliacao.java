@@ -42,7 +42,6 @@ public class UIFormAvaliacao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        numeroInput.setText("Mim de a nota");
         numeroInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numeroInputActionPerformed(evt);

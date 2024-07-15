@@ -46,7 +46,6 @@ public class UIFormFornecedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        nomeInput.setText("Mim de o nome");
         nomeInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeInputActionPerformed(evt);
@@ -55,7 +54,6 @@ public class UIFormFornecedor extends javax.swing.JFrame {
 
         jLabel1.setText("Nome");
 
-        cnpjInput.setText("Mim de o CNPJ");
         cnpjInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cnpjInputActionPerformed(evt);
@@ -64,7 +62,6 @@ public class UIFormFornecedor extends javax.swing.JFrame {
 
         jLabel2.setText("CNPJ");
 
-        emailInput.setText("Mim de o email");
         emailInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailInputActionPerformed(evt);

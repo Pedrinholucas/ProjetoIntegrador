@@ -58,9 +58,6 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="numeroInput">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mim de a nota"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="numeroInputActionPerformed"/>
       </Events>

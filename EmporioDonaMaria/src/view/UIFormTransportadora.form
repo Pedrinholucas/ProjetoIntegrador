@@ -56,9 +56,6 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="nomeInput">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mim de o nome"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomeInputActionPerformed"/>
       </Events>
@@ -69,9 +66,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cnpjInput">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mim de o cnpj"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cnpjInputActionPerformed"/>
       </Events>

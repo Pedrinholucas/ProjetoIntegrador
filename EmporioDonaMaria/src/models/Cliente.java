@@ -13,6 +13,8 @@ public class Cliente {
     private List<String> cartoes = new ArrayList<>();
     private String interesses;
     
+    public Cliente() {}
+
     public Cliente( Integer cpf, String nome, String senha, String email, Integer telefone) {
         this.cpf = cpf;
         this.nome = nome;

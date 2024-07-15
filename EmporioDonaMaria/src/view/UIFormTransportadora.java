@@ -42,7 +42,6 @@ public class UIFormTransportadora extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        nomeInput.setText("Mim de o nome");
         nomeInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeInputActionPerformed(evt);
@@ -51,7 +50,6 @@ public class UIFormTransportadora extends javax.swing.JFrame {
 
         jLabel1.setText("Nome");
 
-        cnpjInput.setText("Mim de o cnpj");
         cnpjInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cnpjInputActionPerformed(evt);

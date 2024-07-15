@@ -42,7 +42,6 @@ public class UIFormCategoria extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        nomeInput.setText("Mim de o nome");
         nomeInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomeInputActionPerformed(evt);
