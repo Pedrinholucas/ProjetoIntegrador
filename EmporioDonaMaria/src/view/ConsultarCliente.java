@@ -44,14 +44,14 @@ public class ConsultarCliente extends javax.swing.JFrame {
         senhaOutput = new javax.swing.JLabel();
         telefoneOutput = new javax.swing.JLabel();
         cpfPesquisado = new javax.swing.JTextField();
-        okBtn = new javax.swing.JButton();
+        buscarBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
 
-        jPanel3.setBackground(new java.awt.Color(240, 240, 240));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         cpfPesquisadoLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cpfPesquisadoLabel.setForeground(new java.awt.Color(51, 51, 51));
@@ -77,10 +77,10 @@ public class ConsultarCliente extends javax.swing.JFrame {
 
         telefoneOutput.setText("...");
 
-        okBtn.setText("ok");
-        okBtn.addActionListener(new java.awt.event.ActionListener() {
+        buscarBtn.setText("Buscar");
+        buscarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                okBtnActionPerformed(evt);
+                buscarBtnActionPerformed(evt);
             }
         });
 
@@ -89,30 +89,29 @@ public class ConsultarCliente extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cpfPesquisadoLabel)
+                    .addComponent(emailLabel)
+                    .addComponent(senhaLabel)
+                    .addComponent(cpfLabel)
+                    .addComponent(nomeLabel)
+                    .addComponent(telefoneLabel))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(cpfPesquisadoLabel))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cpfLabel)
-                            .addComponent(nomeLabel)
-                            .addComponent(emailLabel)
-                            .addComponent(senhaLabel)
-                            .addComponent(telefoneLabel))))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nomeOutput)
-                    .addComponent(cpfOutput)
-                    .addComponent(emailOutput)
-                    .addComponent(senhaOutput)
-                    .addComponent(telefoneOutput)
+                            .addComponent(nomeOutput)
+                            .addComponent(cpfOutput)
+                            .addComponent(emailOutput)
+                            .addComponent(senhaOutput)
+                            .addComponent(telefoneOutput))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(cpfPesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cpfPesquisado)
                         .addGap(18, 18, 18)
-                        .addComponent(okBtn)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(buscarBtn)
+                        .addGap(50, 50, 50))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,28 +120,28 @@ public class ConsultarCliente extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cpfPesquisadoLabel)
                     .addComponent(cpfPesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(okBtn))
-                .addGap(52, 52, 52)
+                    .addComponent(buscarBtn))
+                .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeLabel)
-                    .addComponent(nomeOutput))
-                .addGap(18, 18, 18)
+                    .addComponent(nomeOutput)
+                    .addComponent(nomeLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cpfLabel)
                     .addComponent(cpfOutput))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel)
                     .addComponent(emailOutput))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(senhaLabel)
                     .addComponent(senhaOutput))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(telefoneLabel)
                     .addComponent(telefoneOutput))
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
@@ -157,17 +156,17 @@ public class ConsultarCliente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(230, 230, 230)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(286, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addGap(284, 284, 284))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel2)
-                .addGap(42, 42, 42)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -186,7 +185,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
+    private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
         // TODO add your handling code here:
         ClienteControle clienteContro = new ClienteControle();
         Cliente clienteBuscado = clienteContro.buscarClientePorCpf(cpfPesquisado.getText()); // cpf do cliente a ser buscado
@@ -200,7 +199,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Cliente não encontrado");
         }
-    }//GEN-LAST:event_okBtnActionPerformed
+    }//GEN-LAST:event_buscarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,6 +237,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscarBtn;
     private javax.swing.JLabel cpfLabel;
     private javax.swing.JLabel cpfOutput;
     private javax.swing.JTextField cpfPesquisado;
@@ -249,7 +249,6 @@ public class ConsultarCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel nomeLabel;
     private javax.swing.JLabel nomeOutput;
-    private javax.swing.JButton okBtn;
     private javax.swing.JLabel senhaLabel;
     private javax.swing.JLabel senhaOutput;
     private javax.swing.JLabel telefoneLabel;
