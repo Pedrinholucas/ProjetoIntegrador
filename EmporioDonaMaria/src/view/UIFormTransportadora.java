@@ -6,6 +6,7 @@ package view;
 
 import common.Common;
 import connection.ConnectionMySQL;
+import controller.TransportadoraController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -107,25 +108,26 @@ public class UIFormTransportadora extends javax.swing.JFrame {
     }//GEN-LAST:event_cnpjInputActionPerformed
 
     private void salvarTransportadoraBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarTransportadoraBtnActionPerformed
-        if(Common.isInteger(cnpjInput.getText())){
-            Transportadora obj = new Transportadora(Integer.parseInt(cnpjInput.getText()),nomeInput.getText());
-            ConnectionMySQL teste = new ConnectionMySQL();
-            Connection db = null;
-            PreparedStatement pStatement = null;
-            try {
-                db = teste.conectar();
-                String query = "INSERT INTO Transportadora(nome,cnpj) VALUES ('"+nomeInput.getText()+"', "+Integer.parseInt(cnpjInput.getText())+")";
-                pStatement = db.prepareStatement(query);
-                int rows = pStatement.executeUpdate();
-                if(rows > 0){
-                    JOptionPane.showMessageDialog(null, "Transportadora registrada com exito!");
-                }else JOptionPane.showMessageDialog(null, "algo deu errado");
-            } catch(SQLException err){
-                System.err.println(err);                
-           }    
-        } else{
-            JOptionPane.showMessageDialog(null, "põe numero nas coisa 🎸");
+    if(Common.isInteger(cnpjInput.getText())) {
+
+        TransportadoraController transportadoraControle = new TransportadoraController();
+
+        // Inserir transportadora
+        Transportadora novaTransportadora = new Transportadora();
+        novaTransportadora.setCnpj(cnpjInput.getText());
+        novaTransportadora.setNome(nomeInput.getText());
+
+        boolean inserido = transportadoraControle.inserirTransportadora(novaTransportadora);
+        if (inserido) {
+            JOptionPane.showMessageDialog(null, "Transportadora inserida com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Falha ao inserir a transportadora.");
         }
+
+    } else {
+        JOptionPane.showMessageDialog(null, "CNPJ inválido.");
+    }
+
     }//GEN-LAST:event_salvarTransportadoraBtnActionPerformed
 
     /**

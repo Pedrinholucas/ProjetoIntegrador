@@ -4,19 +4,20 @@
  */
 package view;
 
-import controller.ClienteControle;
+import controller.FornecedorController;
 import javax.swing.JOptionPane;
+import models.Fornecedor;
 
 /**
  *
  * @author janai
  */
-public class RemoverCliente extends javax.swing.JFrame {
+public class RemoverFornecedor extends javax.swing.JFrame {
 
     /**
      * Creates new form RemoverCliente
      */
-    public RemoverCliente() {
+    public RemoverFornecedor() {
         initComponents();
     }
 
@@ -44,10 +45,10 @@ public class RemoverCliente extends javax.swing.JFrame {
 
         titulo.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         titulo.setForeground(new java.awt.Color(51, 51, 51));
-        titulo.setText("Remover cliente");
+        titulo.setText("Remover Fornecedor");
 
         cpfPesquisadoLabel.setForeground(new java.awt.Color(51, 51, 51));
-        cpfPesquisadoLabel.setText("Cpf do cliente");
+        cpfPesquisadoLabel.setText("Cnpj do fornecedor");
 
         cpfPesquisado.setBackground(new java.awt.Color(204, 204, 204));
         cpfPesquisado.setForeground(new java.awt.Color(51, 51, 51));
@@ -122,11 +123,11 @@ public class RemoverCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarBtnActionPerformed
-        ClienteControle clientecontrole = new ClienteControle();
-        boolean deletado = clientecontrole.deletarCliente( cpfPesquisado.getText()); // cpf do cliente a ser deletado
-        if (deletado) {JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso!");
+        FornecedorController controle = new FornecedorController();
+        boolean deletado = controle.deletarFornecedor( cpfPesquisado.getText()); // cpf do cliente a ser deletado
+        if (deletado) {JOptionPane.showMessageDialog(null, "Fornecedor deletado com sucesso!");
         } else {
-            JOptionPane.showMessageDialog(null, "Falha a deletar o cliente.");
+            JOptionPane.showMessageDialog(null, "Falha ao deletar o fornecedor.");
         }
 
     }//GEN-LAST:event_confirmarBtnActionPerformed
@@ -148,20 +149,21 @@ public class RemoverCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RemoverCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoverFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RemoverCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoverFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RemoverCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoverFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RemoverCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoverFornecedor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RemoverCliente().setVisible(true);
+                new RemoverFornecedor().setVisible(true);
             }
         });
     }

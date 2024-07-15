@@ -1,7 +1,7 @@
 package models;
 
 public class Transportadora {
-    private Integer codTransportadora;
+    private Integer id;
     private String cnpj;
     private String nome;
     
@@ -9,13 +9,16 @@ public class Transportadora {
         this.cnpj = cnpj;
         this.nome = nome;
     }
+     public Transportadora() {
 
-    public Integer getCodTransportadora() {
-        return codTransportadora;
     }
 
-    public void setCodTransportadora(Integer codTransportadora) {
-        this.codTransportadora = codTransportadora;
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCnpj() {

@@ -143,7 +143,7 @@ public class UIFormFornecedor extends javax.swing.JFrame {
 
             // Inserir fornecedor
             Fornecedor novoFornecedor = new Fornecedor();
-            novoFornecedor.setCnpj(Integer.valueOf(cnpjInput.getText()));
+            novoFornecedor.setCnpj(cnpjInput.getText());
             novoFornecedor.setNome(nomeInput.getText());
             novoFornecedor.setEmail(emailInput.getText());
             novoFornecedor.setSenha(senhaInput.getText());

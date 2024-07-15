@@ -1,34 +1,38 @@
 package models;
 
 public class Produto{
-    Integer codProduto;
+    Integer id;
     String nome;
-    Double valor;
+    Float valor;
     String descricao;
     Integer quantidadeEstoque;
     String img;
     String detalhesGarantia;
-    Integer codFornecedor;
-    Integer codCategoria;
+    Integer idFornecedor;
+    Integer idCategoria;
     
-    public Produto(String nome, Double valor, String descricao, Integer quantidadeEstoque,
-            String img, String detalhesGarantia, Integer codFornecedor, Integer codCategoria) {
+    public Produto(){
+        
+    }
+    
+    public Produto(String nome, Float valor, String descricao, Integer quantidadeEstoque,
+            String img, String detalhesGarantia, Integer idFornecedor, Integer idCategoria) {
         this.nome = nome;
         this.valor = valor;
         this.descricao = descricao;
         this.quantidadeEstoque = quantidadeEstoque;
         this.img = img;
         this.detalhesGarantia = detalhesGarantia;
-        this.codFornecedor = codFornecedor;
-        this.codCategoria = codCategoria;
+        this.idFornecedor = idFornecedor;
+        this.idCategoria = idCategoria;
     }
 
-    public Integer getCodProduto() {
-        return codProduto;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCodProduto(Integer codProduto) {
-        this.codProduto = codProduto;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -39,11 +43,11 @@ public class Produto{
         this.nome = nome;
     }
 
-    public Double getValor() {
+    public Float getValor() {
         return valor;
     }
 
-    public void setValor(Double valor) {
+    public void setValor(Float valor) {
         this.valor = valor;
     }
 
@@ -79,20 +83,20 @@ public class Produto{
         this.detalhesGarantia = detalhesGarantia;
     }
 
-    public Integer getCodFornecedor() {
-        return codFornecedor;
+    public Integer getIdFornecedor() {
+        return idFornecedor;
     }
 
-    public void setCodFornecedor(Integer codFornecedor) {
-        this.codFornecedor = codFornecedor;
+    public void setIdFornecedor(Integer idFornecedor) {
+        this.idFornecedor = idFornecedor;
     }
 
-    public Integer getCodCategoria() {
-        return codCategoria;
+    public Integer getIdCategoria() {
+        return idCategoria;
     }
 
-    public void setCodCategoria(Integer codCategoria) {
-        this.codCategoria = codCategoria;
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
     }
 
     

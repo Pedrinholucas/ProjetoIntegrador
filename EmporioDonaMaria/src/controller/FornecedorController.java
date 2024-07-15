@@ -24,10 +24,10 @@ public class FornecedorController {
     public boolean inserirFornecedor(Fornecedor fornecedor) {
         String sql = "INSERT INTO Fornecedor (cnpj, nome, email, senha) VALUES (?, ?, ?, ?)";
         PreparedStatement stmt = null;
-
+        con = new ConnectionMySQL().conectar();
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1, fornecedor.getCnpj());
+            stmt.setString(1, fornecedor.getCnpj());
             stmt.setString(2, fornecedor.getNome());
             stmt.setString(3, fornecedor.getEmail());
             stmt.setString(4, fornecedor.getSenha());
@@ -61,7 +61,7 @@ public class FornecedorController {
             stmt.setInt(1, id);
             rs = stmt.executeQuery();
             if (rs.next()) {
-                fornecedor = new Fornecedor(rs.getInt("cnpj"), rs.getString("nome"), rs.getString("email"), rs.getString("senha"));
+                fornecedor = new Fornecedor(rs.getString("cnpj"), rs.getString("nome"), rs.getString("email"), rs.getString("senha"));
                 fornecedor.setId(rs.getInt("id"));
             }
             return fornecedor;
@@ -84,6 +84,44 @@ public class FornecedorController {
             }
         }
     }
+    
+    public Fornecedor buscarFornecedorPorCnpj(String cnpj) {
+        String sql = "SELECT * FROM fornecedor WHERE cnpj = ?";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, cnpj);
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Fornecedor fornecedor = new Fornecedor();
+                fornecedor.setId(rs.getInt("id"));
+                fornecedor.setCnpj(rs.getString("cnpj"));
+                fornecedor.setNome(rs.getString("nome"));
+                fornecedor.setEmail(rs.getString("email"));
+                return fornecedor;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
 
     public List<Fornecedor> listarTodosFornecedores() {
         String sql = "SELECT * FROM Fornecedor";
@@ -95,7 +133,7 @@ public class FornecedorController {
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
-                Fornecedor fornecedor = new Fornecedor(rs.getInt("cnpj"), rs.getString("nome"), rs.getString("email"), rs.getString("senha"));
+                Fornecedor fornecedor = new Fornecedor(rs.getString("cnpj"), rs.getString("nome"), rs.getString("email"), rs.getString("senha"));
                 fornecedor.setId(rs.getInt("id"));
                 fornecedores.add(fornecedor);
             }
@@ -126,7 +164,7 @@ public class FornecedorController {
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1, fornecedor.getCnpj());
+            stmt.setString(1, fornecedor.getCnpj());
             stmt.setString(2, fornecedor.getNome());
             stmt.setString(3, fornecedor.getEmail());
             stmt.setString(4, fornecedor.getSenha());
@@ -150,13 +188,13 @@ public class FornecedorController {
         }
     }
 
-    public boolean deletarFornecedor(Integer id) {
+    public boolean deletarFornecedor(String id) {
         String sql = "DELETE FROM Fornecedor WHERE id = ?";
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setInt(1,id);
+            stmt.setString(1,id);
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {

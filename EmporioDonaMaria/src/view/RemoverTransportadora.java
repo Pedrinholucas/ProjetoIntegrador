@@ -5,18 +5,20 @@
 package view;
 
 import controller.ClienteControle;
+import controller.ProdutoController;
+import controller.TransportadoraController;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author janai
  */
-public class RemoverCliente extends javax.swing.JFrame {
+public class RemoverTransportadora extends javax.swing.JFrame {
 
     /**
      * Creates new form RemoverCliente
      */
-    public RemoverCliente() {
+    public RemoverTransportadora() {
         initComponents();
     }
 
@@ -33,7 +35,7 @@ public class RemoverCliente extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         cpfPesquisadoLabel = new javax.swing.JLabel();
-        cpfPesquisado = new javax.swing.JTextField();
+        input = new javax.swing.JTextField();
         confirmarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,13 +46,13 @@ public class RemoverCliente extends javax.swing.JFrame {
 
         titulo.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         titulo.setForeground(new java.awt.Color(51, 51, 51));
-        titulo.setText("Remover cliente");
+        titulo.setText("Remover transportadora");
 
         cpfPesquisadoLabel.setForeground(new java.awt.Color(51, 51, 51));
-        cpfPesquisadoLabel.setText("Cpf do cliente");
+        cpfPesquisadoLabel.setText("Cnpj da transportadora");
 
-        cpfPesquisado.setBackground(new java.awt.Color(204, 204, 204));
-        cpfPesquisado.setForeground(new java.awt.Color(51, 51, 51));
+        input.setBackground(new java.awt.Color(204, 204, 204));
+        input.setForeground(new java.awt.Color(51, 51, 51));
 
         confirmarBtn.setText("Confirmar");
         confirmarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -73,7 +75,7 @@ public class RemoverCliente extends javax.swing.JFrame {
                     .addComponent(cpfPesquisadoLabel)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(confirmarBtn, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(cpfPesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -84,7 +86,7 @@ public class RemoverCliente extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(cpfPesquisadoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cpfPesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
                 .addComponent(confirmarBtn)
                 .addGap(28, 28, 28))
@@ -122,11 +124,11 @@ public class RemoverCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarBtnActionPerformed
-        ClienteControle clientecontrole = new ClienteControle();
-        boolean deletado = clientecontrole.deletarCliente( cpfPesquisado.getText()); // cpf do cliente a ser deletado
-        if (deletado) {JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso!");
+        TransportadoraController controle = new TransportadoraController();
+        boolean deletado = controle.deletarTransportadora(input.getText()); // cpf do cliente a ser deletado
+        if (deletado) {JOptionPane.showMessageDialog(null, "Transportadora deletada com sucesso!");
         } else {
-            JOptionPane.showMessageDialog(null, "Falha a deletar o cliente.");
+            JOptionPane.showMessageDialog(null, "Falha a deletar a transportadora.");
         }
 
     }//GEN-LAST:event_confirmarBtnActionPerformed
@@ -148,28 +150,31 @@ public class RemoverCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RemoverCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoverTransportadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RemoverCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoverTransportadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RemoverCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoverTransportadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RemoverCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RemoverTransportadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RemoverCliente().setVisible(true);
+                new RemoverTransportadora().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton confirmarBtn;
-    private javax.swing.JTextField cpfPesquisado;
     private javax.swing.JLabel cpfPesquisadoLabel;
+    private javax.swing.JTextField input;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel titulo;
