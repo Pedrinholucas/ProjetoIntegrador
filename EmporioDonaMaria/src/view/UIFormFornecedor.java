@@ -7,6 +7,7 @@ package view;
 import models.Fornecedor;
 import common.Common;
 import connection.ConnectionMySQL;
+import controller.FornecedorController;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -137,25 +138,26 @@ public class UIFormFornecedor extends javax.swing.JFrame {
     }//GEN-LAST:event_emailInputActionPerformed
 
     private void salvarFornecedorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarFornecedorBtnActionPerformed
-        if(Common.isInteger(cnpjInput.getText())){
-            Fornecedor obj = new Fornecedor(Integer.parseInt(cnpjInput.getText()), nomeInput.getText(), emailInput.getText(), senhaInput.getText());
-            ConnectionMySQL teste = new ConnectionMySQL();
-            Connection db = null;
-            PreparedStatement pStatement = null;
-            try {
-		db = teste.conectar();
-		String query = "INSERT INTO Fornecedor(cnpj, nome, email, senha) VALUES ("+Integer.parseInt(cnpjInput.getText())+", '"+ nomeInput.getText()+ "', '"+ emailInput.getText()+ "', '"+ senhaInput.getText() + "')";
-		pStatement = db.prepareStatement(query);
-		int rows = pStatement.executeUpdate();
-                if(rows > 0){
-                    JOptionPane.showMessageDialog(null, "conta fornecedor registrada com exito!");
-                }else JOptionPane.showMessageDialog(null, "algo deu errado");
-            } catch(SQLException err){
-                System.err.println(err);                
-            }    
-        } else{
-            JOptionPane.showMessageDialog(null, "põe numero nas coisa 🎸");
-        }        
+        if (Common.isInteger(cnpjInput.getText())) {
+            FornecedorController fornecedorControle = new FornecedorController();
+
+            // Inserir fornecedor
+            Fornecedor novoFornecedor = new Fornecedor();
+            novoFornecedor.setCnpj(Integer.valueOf(cnpjInput.getText()));
+            novoFornecedor.setNome(nomeInput.getText());
+            novoFornecedor.setEmail(emailInput.getText());
+            novoFornecedor.setSenha(senhaInput.getText());
+
+            boolean inserido = fornecedorControle.inserirFornecedor(novoFornecedor);
+            if (inserido) {
+                JOptionPane.showMessageDialog(null, "Fornecedor inserido com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Falha ao inserir o fornecedor.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "CNPJ deve ser numérico!");
+        }
+
     }//GEN-LAST:event_salvarFornecedorBtnActionPerformed
 
     /**

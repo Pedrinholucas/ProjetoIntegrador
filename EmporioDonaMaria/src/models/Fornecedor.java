@@ -1,11 +1,13 @@
 package models;
 
 public class Fornecedor {
-    private Integer codFornecedor;
+    private Integer id;
     private Integer cnpj;
     private String nome;
     private String email;
     private String senha;
+    
+    public Fornecedor() {}
     
     public Fornecedor(Integer cnpj, String nome, String email, String senha) {
         this.cnpj = cnpj;
@@ -14,12 +16,12 @@ public class Fornecedor {
         this.senha = senha;
     }
 
-    public Integer getCodFornecedor() {
-        return codFornecedor;
+    public Integer getId() {
+        return id;
     }
 
-    public void setCodFornecedor(Integer codFornecedor) {
-        this.codFornecedor = codFornecedor;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getCnpj() {
