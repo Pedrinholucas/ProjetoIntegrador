@@ -5,7 +5,7 @@
 package view;
 
 
-import controller.ClienteControle;
+import controller.ClienteController;
 import controller.FornecedorController;
 import java.util.List;
 import javax.swing.JOptionPane;

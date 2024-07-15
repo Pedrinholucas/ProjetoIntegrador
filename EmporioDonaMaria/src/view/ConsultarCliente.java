@@ -5,7 +5,7 @@
 package view;
 
 
-import controller.ClienteControle;
+import controller.ClienteController;
 import javax.swing.JOptionPane;
 import models.Cliente;
 
@@ -187,7 +187,7 @@ public class ConsultarCliente extends javax.swing.JFrame {
 
     private void buscarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBtnActionPerformed
         // TODO add your handling code here:
-        ClienteControle clienteContro = new ClienteControle();
+        ClienteController clienteContro = new ClienteController();
         Cliente clienteBuscado = clienteContro.buscarClientePorCpf(cpfPesquisado.getText()); // cpf do cliente a ser buscado
         if (clienteBuscado != null) {
             JOptionPane.showMessageDialog(null, "Cliente encontrado com sucesso!");

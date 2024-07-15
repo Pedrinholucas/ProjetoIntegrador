@@ -3,14 +3,16 @@ package models;
 public class Avaliacao {
     private Integer id;
     private Float numero;
-    private String idProduto;
+    private Integer idProduto;
     
-    public Avaliacao( Float numero, String idProduto) {
+    public Avaliacao(){};
+    
+    public Avaliacao( Float numero, Integer idProduto) {
         this.numero = numero;
         this.idProduto = idProduto;
     }
 
-    public Integer getid() {
+    public Integer getId() {
         return id;
     }
 
@@ -18,19 +20,19 @@ public class Avaliacao {
         this.id = id;
     }
 
-    public Float getnumero() {
+    public Float getNumero() {
         return numero;
     }
 
-    public void setnumero(Float numero) {
+    public void setNumero(Float numero) {
         this.numero = numero;
     }
 
-    public String getidProduto() {
+    public Integer getIdProduto() {
         return idProduto;
     }
 
-    public void setIdProduto(String idProduto) {
+    public void setIdProduto(Integer idProduto) {
         this.idProduto = idProduto;
     }
     

@@ -1,19 +1,21 @@
 package models;
 
 public class Categoria{
-    Integer codCategoria;
+    Integer idCategoria;
     String nome; 
     String descricao;
+    
+    public Categoria(){};
     
     public Categoria( String nome, String descricao) {
         this.nome = nome;
         this.descricao = descricao;
     }
-    public Integer getCodCategoria() {
-        return codCategoria;
+    public Integer getIdCategoria() {
+        return idCategoria;
     }
-    public void setCodCategoria(Integer codCategoria) {
-        this.codCategoria = codCategoria;
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
     }
     public String getNome() {
         return nome;

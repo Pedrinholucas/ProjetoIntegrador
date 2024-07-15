@@ -4,7 +4,7 @@
  */
 package view;
 
-import controller.ClienteControle;
+import controller.ClienteController;
 import controller.ProdutoController;
 import controller.TransportadoraController;
 import javax.swing.JOptionPane;

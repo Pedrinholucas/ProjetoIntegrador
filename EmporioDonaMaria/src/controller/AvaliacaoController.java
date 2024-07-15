@@ -1,6 +1,6 @@
-package controller;
+package Controller;
 
-import models.Cliente;
+import models.Avaliacao;
 import connection.ConnectionMySQL;
 
 import java.sql.Connection;
@@ -10,24 +10,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteControle {
+public class AvaliacaoController {
     private Connection con;
 
-    public ClienteControle() {
+    public AvaliacaoController() {
         con = new ConnectionMySQL().conectar();
     }
 
-    public boolean inserirCliente(Cliente cliente) {
-        String sql = "INSERT INTO cliente (cpf, nome, senha, email, telefone) VALUES (?, ?, ?, ?, ?)";
+    public boolean inserirAvaliacao(Avaliacao avaliacao) {
+        String sql = "INSERT INTO avaliacao (nota, idProduto) VALUES (?, ?)";
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, cliente.getCpf());
-            stmt.setString(2, cliente.getNome());
-            stmt.setString(3, cliente.getSenha());
-            stmt.setString(4, cliente.getEmail());
-            stmt.setString(5, cliente.getTelefone().toString());
+            stmt.setInt(1, avaliacao.getIdProduto());
+            stmt.setFloat(2, avaliacao.getNumero());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -47,18 +44,15 @@ public class ClienteControle {
         }
     }
 
-    public boolean atualizarCliente(Cliente cliente) {
-        String sql = "UPDATE cliente SET cpf = ?, nome = ?, senha = ?, email = ?, telefone = ? WHERE cpf = ?";
+    public boolean atualizarAvaliacao(Avaliacao avaliacao) {
+        String sql = "UPDATE avaliacao SET nota = ?, idProduto = ? WHERE id = ?";
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, cliente.getCpf());
-            stmt.setString(2, cliente.getNome());
-            stmt.setString(3, cliente.getSenha());
-            stmt.setString(4, cliente.getEmail());
-            stmt.setString(5, cliente.getTelefone().toString());
-            stmt.setString(6, cliente.getCpf());
+            stmt.setFloat(1, avaliacao.getNumero());
+            stmt.setInt(2, avaliacao.getIdProduto());
+            stmt.setInt(5, avaliacao.getId());
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -78,13 +72,13 @@ public class ClienteControle {
         }
     }
 
-    public boolean deletarCliente(String cpf) {
-        String sql = "DELETE FROM cliente WHERE cpf = ?";
+    public boolean deletarAvaliacao(int id) {
+        String sql = "DELETE FROM avaliacao WHERE id = ?";
         PreparedStatement stmt = null;
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, cpf);
+            stmt.setInt(1, id);
             stmt.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -104,25 +98,22 @@ public class ClienteControle {
         }
     }
 
-    public Cliente buscarClientePorCpf(String cpf) {
-        String sql = "SELECT * FROM cliente WHERE cpf = ?";
+    public Avaliacao buscarAvaliacaoPorId(int id) {
+        String sql = "SELECT * FROM avaliacao WHERE id = ?";
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, cpf);
+            stmt.setInt(1, id);
             rs = stmt.executeQuery();
 
             if (rs.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setCod_cliente(rs.getInt("id"));
-                cliente.setCpf(rs.getString("cpf"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setSenha(rs.getString("senha"));
-                cliente.setEmail(rs.getString("email"));
-                cliente.setTelefone( Integer. valueOf(rs.getString("telefone")));
-                return cliente;
+                Avaliacao avaliacao = new Avaliacao();
+                avaliacao.setId(rs.getInt("id"));
+                avaliacao.setNumero(rs.getFloat("nota"));
+                avaliacao.setIdProduto(rs.getInt("idProduto"));
+                return avaliacao;
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -144,25 +135,22 @@ public class ClienteControle {
         return null;
     }
 
-    public List<Cliente> listarTodosClientes() {
-        String sql = "SELECT * FROM cliente";
+    public List<Avaliacao> listarTodasAvaliacoes() {
+        String sql = "SELECT * FROM avaliacao";
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        List<Cliente> clientes = new ArrayList<>();
+        List<Avaliacao> avaliacoes = new ArrayList<>();
 
         try {
             stmt = con.prepareStatement(sql);
             rs = stmt.executeQuery();
 
             while (rs.next()) {
-                Cliente cliente = new Cliente();
-                cliente.setCod_cliente(rs.getInt("id"));
-                cliente.setCpf(rs.getString("cpf"));
-                cliente.setNome(rs.getString("nome"));
-                cliente.setSenha(rs.getString("senha"));
-                cliente.setEmail(rs.getString("email"));
-                cliente.setTelefone( Integer. valueOf(rs.getString("telefone")));
-                clientes.add(cliente);
+                Avaliacao avaliacao = new Avaliacao();
+                avaliacao.setId(rs.getInt("id"));
+                avaliacao.setNumero(rs.getFloat("nota"));
+                avaliacao.setIdProduto(rs.getInt("idProduto"));
+                avaliacoes.add(avaliacao);
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -181,6 +169,6 @@ public class ClienteControle {
                 System.out.println(e);
             }
         }
-        return clientes;
+        return avaliacoes;
     }
 }

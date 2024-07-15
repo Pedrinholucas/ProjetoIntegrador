@@ -1,21 +1,24 @@
 package models;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 public class Encomenda {
-    private Integer codEncomenda;
+    private Integer idEncomenda;
     private String enderecoEntrega;
-    private Double frete;
-    private Double valorTotal;
-    private LocalDate dataAquisicao;
-    private LocalDate dataEntrega;
+    private Float frete;
+    private Float valorTotal;
+    private Date dataAquisicao;
+    private Date dataEntrega;
     private Cliente cliente;
     private Transportadora transportadora;
 
-    public Encomenda(Integer codEncomenda, String enderecoEntrega, Double frete,
-            Double valorTotal, LocalDate dataAquisicao, LocalDate dataEntrega, Cliente cliente,
+    public Encomenda(){};
+    
+    public Encomenda(Integer idEncomenda, String enderecoEntrega, Float frete,
+            Float valorTotal, Date dataAquisicao, Date dataEntrega, Cliente cliente,
             Transportadora transportadora) {
-        this.codEncomenda = codEncomenda;
+        this.idEncomenda = idEncomenda;
         this.enderecoEntrega = enderecoEntrega;
         this.frete = frete;
         this.valorTotal = valorTotal;
@@ -25,11 +28,11 @@ public class Encomenda {
         this.transportadora = transportadora;
     }
     
-    public Integer getCodEncomenda() {
-        return codEncomenda;
+    public Integer getIdEncomenda() {
+        return idEncomenda;
     }
-    public void setCodEncomenda(Integer codEncomenda) {
-        this.codEncomenda = codEncomenda;
+    public void setIdEncomenda(Integer idEncomenda) {
+        this.idEncomenda = idEncomenda;
     }
     public String getEnderecoEntrega() {
         return enderecoEntrega;
@@ -37,28 +40,28 @@ public class Encomenda {
     public void setEnderecoEntrega(String enderecoEntrega) {
         this.enderecoEntrega = enderecoEntrega;
     }
-    public Double getFrete() {
+    public Float getFrete() {
         return frete;
     }
-    public void setFrete(Double frete) {
+    public void setFrete(Float frete) {
         this.frete = frete;
     }
-    public Double getValorTotal() {
+    public Float getValorTotal() {
         return valorTotal;
     }
-    public void setValorTotal(Double valorTotal) {
+    public void setValorTotal(Float valorTotal) {
         this.valorTotal = valorTotal;
     }
-    public LocalDate getDataAquisicao() {
+    public Date getDataAquisicao() {
         return dataAquisicao;
     }
-    public void setDataAquisicao(LocalDate dataAquisicao) {
+    public void setDataAquisicao(Date dataAquisicao) {
         this.dataAquisicao = dataAquisicao;
     }
-    public LocalDate getDataEntrega() {
+    public Date getDataEntrega() {
         return dataEntrega;
     }
-    public void setDataEntrega(LocalDate dataEntrega) {
+    public void setDataEntrega(Date dataEntrega) {
         this.dataEntrega = dataEntrega;
     }
     public Cliente getCliente() {

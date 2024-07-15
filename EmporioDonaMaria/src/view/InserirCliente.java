@@ -8,7 +8,7 @@ package view;
 
 import common.Common;
 import connection.ConnectionMySQL;
-import controller.ClienteControle;
+import controller.ClienteController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -237,7 +237,7 @@ public class InserirCliente extends javax.swing.JFrame {
     private void salvarInserirClienteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarInserirClienteBtnActionPerformed
     if(Common.isInteger(cpfInput.getText()) && Common.isInteger(telefoneInput.getText())){
         
-        ClienteControle ClienteControle = new ClienteControle();
+        ClienteController ClienteControle = new ClienteController();
 
         // Inserir cliente
         Cliente novoCliente = new Cliente();

@@ -4,7 +4,7 @@
  */
 package view;
 
-import controller.ClienteControle;
+import controller.ClienteController;
 import javax.swing.JOptionPane;
 
 /**
@@ -127,7 +127,7 @@ public class RemoverCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void confirmarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarBtnActionPerformed
-        ClienteControle clientecontrole = new ClienteControle();
+        ClienteController clientecontrole = new ClienteController();
         boolean deletado = clientecontrole.deletarCliente( cpfPesquisado.getText()); // cpf do cliente a ser deletado
         if (deletado) {JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso!");
         } else {
