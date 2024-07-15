@@ -4,23 +4,25 @@
  */
 package view;
 
+import common.Common;
 import connection.ConnectionMySQL;
+import controller.TransportadoraController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import models.Categoria;
+import models.Transportadora;
 
 /**
  *
  * @author pedro
  */
-public class UIFormCategoria extends javax.swing.JFrame {
+public class InserirTransportadora extends javax.swing.JFrame {
 
     /**
      * Creates new form UIForm
      */
-    public UIFormCategoria() {
+    public InserirTransportadora() {
         initComponents();
     }
 
@@ -35,10 +37,9 @@ public class UIFormCategoria extends javax.swing.JFrame {
 
         nomeInput = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        cnpjInput = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        descricaoInput = new javax.swing.JTextArea();
-        salvarCategoriaBtn = new javax.swing.JButton();
+        salvarTransportadoraBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,16 +51,18 @@ public class UIFormCategoria extends javax.swing.JFrame {
 
         jLabel1.setText("Nome");
 
-        jLabel2.setText("Descricao");
-
-        descricaoInput.setColumns(20);
-        descricaoInput.setRows(5);
-        jScrollPane1.setViewportView(descricaoInput);
-
-        salvarCategoriaBtn.setText("Salvar");
-        salvarCategoriaBtn.addActionListener(new java.awt.event.ActionListener() {
+        cnpjInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salvarCategoriaBtnActionPerformed(evt);
+                cnpjInputActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("CNPJ");
+
+        salvarTransportadoraBtn.setText("Salvar");
+        salvarTransportadoraBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarTransportadoraBtnActionPerformed(evt);
             }
         });
 
@@ -70,12 +73,11 @@ public class UIFormCategoria extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(82, 82, 82)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(salvarCategoriaBtn)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1)
-                        .addComponent(nomeInput, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1)))
+                    .addComponent(salvarTransportadoraBtn)
+                    .addComponent(jLabel2)
+                    .addComponent(cnpjInput, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(nomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(617, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -87,11 +89,11 @@ public class UIFormCategoria extends javax.swing.JFrame {
                 .addComponent(nomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cnpjInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(salvarCategoriaBtn)
-                .addContainerGap(497, Short.MAX_VALUE))
+                .addComponent(salvarTransportadoraBtn)
+                .addContainerGap(567, Short.MAX_VALUE))
         );
 
         pack();
@@ -101,23 +103,32 @@ public class UIFormCategoria extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomeInputActionPerformed
 
-    private void salvarCategoriaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarCategoriaBtnActionPerformed
-        Categoria obj = new Categoria(nomeInput.getText(),descricaoInput.getText());
-        ConnectionMySQL teste = new ConnectionMySQL();
-        Connection db = null;
-        PreparedStatement pStatement = null;
-        try {
-            db = teste.conectar();
-            String query = "INSERT INTO Categoria(nome,descricao) VALUES ('"+nomeInput.getText()+"', '"+descricaoInput.getText()+"')";
-            pStatement = db.prepareStatement(query);
-            int rows = pStatement.executeUpdate();
-            if(rows > 0){
-                JOptionPane.showMessageDialog(null, "Categoria registrada com exito!");
-            }else JOptionPane.showMessageDialog(null, "algo deu errado");
-        } catch(SQLException err){
-            System.err.println(err);                
+    private void cnpjInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cnpjInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cnpjInputActionPerformed
+
+    private void salvarTransportadoraBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarTransportadoraBtnActionPerformed
+    if(Common.isInteger(cnpjInput.getText())) {
+
+        TransportadoraController transportadoraControle = new TransportadoraController();
+
+        // Inserir transportadora
+        Transportadora novaTransportadora = new Transportadora();
+        novaTransportadora.setCnpj(cnpjInput.getText());
+        novaTransportadora.setNome(nomeInput.getText());
+
+        boolean inserido = transportadoraControle.inserirTransportadora(novaTransportadora);
+        if (inserido) {
+            JOptionPane.showMessageDialog(null, "Transportadora inserida com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Falha ao inserir a transportadora.");
         }
-    }//GEN-LAST:event_salvarCategoriaBtnActionPerformed
+
+    } else {
+        JOptionPane.showMessageDialog(null, "CNPJ inválido.");
+    }
+
+    }//GEN-LAST:event_salvarTransportadoraBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -136,13 +147,13 @@ public class UIFormCategoria extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UIFormCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InserirTransportadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UIFormCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InserirTransportadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UIFormCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InserirTransportadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UIFormCategoria.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InserirTransportadora.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -156,17 +167,16 @@ public class UIFormCategoria extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UIFormCategoria().setVisible(true);
+                new InserirTransportadora().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea descricaoInput;
+    private javax.swing.JTextField cnpjInput;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nomeInput;
-    private javax.swing.JButton salvarCategoriaBtn;
+    private javax.swing.JButton salvarTransportadoraBtn;
     // End of variables declaration//GEN-END:variables
 }

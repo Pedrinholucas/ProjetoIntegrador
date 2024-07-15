@@ -6,6 +6,7 @@ package view;
 
 import common.Common;
 import connection.ConnectionMySQL;
+import controller.ProdutoController;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -16,12 +17,12 @@ import models.Produto;
  *
  * @author pedro
  */
-public class UIFormProduto extends javax.swing.JFrame {
+public class InserirProduto extends javax.swing.JFrame {
 
     /**
      * Creates new form UIForm
      */
-    public UIFormProduto() {
+    public InserirProduto() {
         initComponents();
     }
 
@@ -179,25 +180,31 @@ public class UIFormProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_categoriaInputActionPerformed
 
     private void salvarProdutoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarProdutoBtnActionPerformed
-        if(Common.isInteger(estoqueInput.getText())){
-            Produto obj = new Produto(nomeInput.getText(), Integer.parseInt(valorInput.getText()), descricaoInput.getText(), Integer.parseInt(estoqueInput.getText()), garantiaInput.getText(), categoriaInput.getText());
-            ConnectionMySQL teste = new ConnectionMySQL();
-            Connection db = null;
-            PreparedStatement pStatement = null;
-            try {
-                db = teste.conectar();
-                String query = "INSERT INTO Produto(Int,String) VALUES ('"+nomeInput.getText()+"',"+Integer.parseInt(valorInput.getText())+", '"+descricaoInput.getText()+"',"+Integer.parseInt(estoqueInput.getText())+",'"+garantiaInput.getText()+"','"+categoriaInput.getText()+"')";
-                pStatement = db.prepareStatement(query);
-                int rows = pStatement.executeUpdate();
-                if(rows > 0){
-                    JOptionPane.showMessageDialog(null, "Classe registrada com exito!");
-                }else JOptionPane.showMessageDialog(null, "algo deu errado");
-            } catch(SQLException err){
-                System.err.println(err);                
-            }    
-        } else{
-            JOptionPane.showMessageDialog(null, "põe numero nas coisa 🎸");
+    if(Common.isInteger(valorInput.getText()) && Common.isInteger(estoqueInput.getText())){
+
+        ProdutoController produtoController = new ProdutoController();
+
+        // Inserir produto
+        Produto novoProduto = new Produto();
+        novoProduto.setNome(nomeInput.getText());
+        novoProduto.setValor(Float.valueOf(valorInput.getText()));
+        novoProduto.setDescricao(descricaoInput.getText());
+        novoProduto.setQuantidadeEstoque(Integer.valueOf(estoqueInput.getText()));
+        novoProduto.setDetalhesGarantia(garantiaInput.getText());
+//        novoProduto.setIdFornecedor(Integer.valueOf(idFornecedorInput.getText()));
+//        novoProduto.setIdCategoria(Integer.valueOf(idCategoriaInput.getText()));
+// todo combo box depois
+        boolean inserido = produtoController.inserirProduto(novoProduto);
+        if (inserido) {
+            JOptionPane.showMessageDialog(null, "Produto inserido com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Falha ao inserir o produto.");
         }
+
+    } else{
+        JOptionPane.showMessageDialog(null, "Valores inválidos.");
+    }
+
     }//GEN-LAST:event_salvarProdutoBtnActionPerformed
 
     /**
@@ -217,14 +224,18 @@ public class UIFormProduto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UIFormProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InserirProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UIFormProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InserirProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UIFormProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InserirProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UIFormProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InserirProduto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -233,7 +244,7 @@ public class UIFormProduto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UIFormProduto().setVisible(true);
+                new InserirProduto().setVisible(true);
             }
         });
     }
