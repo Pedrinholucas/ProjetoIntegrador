@@ -32,10 +32,9 @@ public class RemoverCliente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        idInput = new javax.swing.JTextField();
+        cpfPesquisadoLabel = new javax.swing.JLabel();
+        cpfPesquisado = new javax.swing.JTextField();
         confirmarBtn = new javax.swing.JButton();
-        cancelarBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,11 +46,11 @@ public class RemoverCliente extends javax.swing.JFrame {
         titulo.setForeground(new java.awt.Color(51, 51, 51));
         titulo.setText("Remover cliente");
 
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Id do cliente");
+        cpfPesquisadoLabel.setForeground(new java.awt.Color(51, 51, 51));
+        cpfPesquisadoLabel.setText("Cpf do cliente");
 
-        idInput.setBackground(new java.awt.Color(204, 204, 204));
-        idInput.setForeground(new java.awt.Color(51, 51, 51));
+        cpfPesquisado.setBackground(new java.awt.Color(204, 204, 204));
+        cpfPesquisado.setForeground(new java.awt.Color(51, 51, 51));
 
         confirmarBtn.setText("Confirmar");
         confirmarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -59,8 +58,6 @@ public class RemoverCliente extends javax.swing.JFrame {
                 confirmarBtnActionPerformed(evt);
             }
         });
-
-        cancelarBtn.setText("Cancelar");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -73,13 +70,10 @@ public class RemoverCliente extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addComponent(cpfPesquisadoLabel)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addComponent(confirmarBtn)
-                            .addGap(18, 18, 18)
-                            .addComponent(cancelarBtn))
-                        .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(confirmarBtn, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(cpfPesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -88,13 +82,11 @@ public class RemoverCliente extends javax.swing.JFrame {
                 .addGap(40, 40, 40)
                 .addComponent(titulo)
                 .addGap(30, 30, 30)
-                .addComponent(jLabel1)
+                .addComponent(cpfPesquisadoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(idInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cpfPesquisado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(confirmarBtn)
-                    .addComponent(cancelarBtn))
+                .addComponent(confirmarBtn)
                 .addGap(28, 28, 28))
         );
 
@@ -131,7 +123,7 @@ public class RemoverCliente extends javax.swing.JFrame {
 
     private void confirmarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarBtnActionPerformed
         ClienteControle clientecontrole = new ClienteControle();
-        boolean deletado = clientecontrole.deletarCliente(1); // ID do cliente a ser deletado
+        boolean deletado = clientecontrole.deletarCliente( cpfPesquisado.getText()); // cpf do cliente a ser deletado
         if (deletado) {JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso!");
         } else {
             JOptionPane.showMessageDialog(null, "Falha ao deletado o cliente.");
@@ -175,10 +167,9 @@ public class RemoverCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cancelarBtn;
     private javax.swing.JButton confirmarBtn;
-    private javax.swing.JTextField idInput;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField cpfPesquisado;
+    private javax.swing.JLabel cpfPesquisadoLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel titulo;
