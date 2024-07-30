@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JList" name="jList1">
+          <Properties>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="5">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+                <StringItem index="4" value="Item 5"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -49,7 +91,7 @@
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="286" max="32767" attributes="0"/>
+                  <EmptySpace pref="207" max="32767" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="284" max="-2" attributes="0"/>
               </Group>
@@ -60,7 +102,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="45" max="32767" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -81,30 +123,41 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cpfPesquisadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="emailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="senhaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="cpfLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="nomeLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="telefoneLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="nomeOutput" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cpfOutput" min="-2" max="-2" attributes="0"/>
-                                  <Component id="emailOutput" min="-2" max="-2" attributes="0"/>
-                                  <Component id="senhaOutput" min="-2" max="-2" attributes="0"/>
-                                  <Component id="telefoneOutput" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cpfPesquisadoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="emailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cpfLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nomeLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="cpfPesquisado" pref="499" max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="buscarBtn" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="nomeInput" alignment="0" pref="200" max="32767" attributes="0"/>
+                                          <Component id="cpfInput" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="emailInput" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="cpfPesquisado" max="32767" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="buscarBtn" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="telefoneLabel" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                      <Component id="telInput" min="-2" pref="200" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="salvarBtn" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -119,32 +172,29 @@
                           <Component id="cpfPesquisado" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="buscarBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="nomeOutput" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="nomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nomeInput" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cpfLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cpfOutput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cpfInput" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="emailLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="emailOutput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="emailInput" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="senhaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="senhaOutput" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="telefoneLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="telefoneOutput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="telInput" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="173" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                      <Component id="salvarBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="132" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -176,39 +226,9 @@
                 <Property name="text" type="java.lang.String" value="email:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="senhaLabel">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="senha:"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="telefoneLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="telefone:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="nomeOutput">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="..."/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="cpfOutput">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="..."/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="emailOutput">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="..."/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="senhaOutput">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="..."/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="telefoneOutput">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="..."/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="cpfPesquisado">
@@ -226,6 +246,22 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buscarBtnActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="salvarBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salvar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvarBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="nomeInput">
+            </Component>
+            <Component class="javax.swing.JTextField" name="cpfInput">
+            </Component>
+            <Component class="javax.swing.JTextField" name="emailInput">
+            </Component>
+            <Component class="javax.swing.JTextField" name="telInput">
+            </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -236,7 +272,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Consultar dados de cliente"/>
+            <Property name="text" type="java.lang.String" value="Consultar e editar dados de cliente"/>
           </Properties>
         </Component>
       </SubComponents>

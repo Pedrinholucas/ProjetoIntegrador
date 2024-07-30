@@ -48,10 +48,10 @@
                   <Component id="jPanel3" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="230" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
+                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -60,7 +60,7 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="37" max="32767" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -69,11 +69,6 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanel3">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f0" green="f0" red="f0" type="rgb"/>
-            </Property>
-          </Properties>
 
           <Layout>
             <DimensionLayout dim="0">
@@ -86,9 +81,9 @@
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="salvarBtn" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
@@ -97,17 +92,21 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nomeOutput" min="-2" max="-2" attributes="0"/>
-                          <Component id="cpfOutput" min="-2" max="-2" attributes="0"/>
-                          <Component id="emailOutput" min="-2" max="-2" attributes="0"/>
-                          <Component id="senhaOutput" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Component id="input" min="-2" pref="420" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="okBtn" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="input" min="-2" pref="420" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="okBtn" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="nomeInput" min="-2" pref="200" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="0" pref="21" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="cnpjInput" max="32767" attributes="0"/>
+                          <Component id="emailInput" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="21" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -120,27 +119,24 @@
                           <Component id="input" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="okBtn" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="nomeOutput" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nomeInput" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cpfOutput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cnpjInput" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="emailOutput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="emailInput" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="senhaOutput" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="127" max="32767" attributes="0"/>
+                      <Component id="salvarBtn" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="118" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -172,31 +168,6 @@
                 <Property name="text" type="java.lang.String" value="email:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel6">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="senha:"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="nomeOutput">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="..."/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="cpfOutput">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="..."/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="emailOutput">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="..."/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="senhaOutput">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="..."/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JTextField" name="input">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputActionPerformed"/>
@@ -210,6 +181,20 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okBtnActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JTextField" name="nomeInput">
+            </Component>
+            <Component class="javax.swing.JTextField" name="cnpjInput">
+            </Component>
+            <Component class="javax.swing.JTextField" name="emailInput">
+            </Component>
+            <Component class="javax.swing.JButton" name="salvarBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Salvar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salvarBtnActionPerformed"/>
+              </Events>
+            </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -220,7 +205,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Consultar dados de fornecedor"/>
+            <Property name="text" type="java.lang.String" value="Consultar e editar dados de fornecedor"/>
           </Properties>
         </Component>
       </SubComponents>

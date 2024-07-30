@@ -44,6 +44,8 @@ public class FornecedorController {
 
     public Fornecedor buscarFornecedorPorId(int id) {
         String sql = "SELECT * FROM Fornecedor WHERE id = ?";
+        System.out.println("amo penis");
+                
         PreparedStatement stmt = null;
         ResultSet rs = null;
         Fornecedor fornecedor = null;
@@ -81,13 +83,15 @@ public class FornecedorController {
         String sql = "SELECT * FROM fornecedor WHERE cnpj = ?";
         PreparedStatement stmt = null;
         ResultSet rs = null;
+        System.out.println("amo cenis");
 
         try {
             stmt = con.prepareStatement(sql);
             stmt.setString(1, cnpj);
             rs = stmt.executeQuery();
-
+            System.out.println("amo penis");
             if (rs.next()) {
+                System.out.println("amo denis");
                 Fornecedor fornecedor = new Fornecedor();
                 fornecedor.setId(rs.getInt("id"));
                 fornecedor.setCnpj(rs.getString("cnpj"));
@@ -204,5 +208,8 @@ public class FornecedorController {
                 System.out.println(e);
             }
         }
+    }
+    public void main(String args[]) {
+        buscarFornecedorPorCnpj("1");
     }
 }

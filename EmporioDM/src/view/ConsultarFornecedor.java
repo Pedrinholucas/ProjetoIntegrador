@@ -39,20 +39,17 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        nomeOutput = new javax.swing.JLabel();
-        cpfOutput = new javax.swing.JLabel();
-        emailOutput = new javax.swing.JLabel();
-        senhaOutput = new javax.swing.JLabel();
         input = new javax.swing.JTextField();
         okBtn = new javax.swing.JButton();
+        nomeInput = new javax.swing.JTextField();
+        cnpjInput = new javax.swing.JTextField();
+        emailInput = new javax.swing.JTextField();
+        salvarBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-
-        jPanel3.setBackground(new java.awt.Color(240, 240, 240));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
@@ -64,16 +61,6 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
 
         jLabel5.setText("email:");
 
-        jLabel6.setText("senha:");
-
-        nomeOutput.setText("...");
-
-        cpfOutput.setText("...");
-
-        emailOutput.setText("...");
-
-        senhaOutput.setText("...");
-
         input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputActionPerformed(evt);
@@ -84,6 +71,13 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
         okBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okBtnActionPerformed(evt);
+            }
+        });
+
+        salvarBtn.setText("Salvar");
+        salvarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarBtnActionPerformed(evt);
             }
         });
 
@@ -99,22 +93,24 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(66, 66, 66))
+                            .addComponent(salvarBtn))
+                        .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nomeOutput)
-                    .addComponent(cpfOutput)
-                    .addComponent(emailOutput)
-                    .addComponent(senhaOutput)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(okBtn)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(okBtn))
+                            .addComponent(nomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 21, Short.MAX_VALUE))
+                    .addComponent(cnpjInput)
+                    .addComponent(emailInput))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,28 +120,26 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(okBtn))
-                .addGap(52, 52, 52)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(46, 46, 46)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(nomeOutput))
+                    .addComponent(nomeInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(cpfOutput))
+                    .addComponent(cnpjInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(emailOutput))
+                    .addComponent(emailInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(senhaOutput))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addComponent(salvarBtn)
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setText("Consultar dados de fornecedor");
+        jLabel2.setText("Consultar e editar dados de fornecedor");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -155,17 +149,17 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(230, 230, 230)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(157, 157, 157))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(42, 42, 42)
+                .addGap(30, 30, 30)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -187,13 +181,12 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
         // TODO add your handling code here:
         FornecedorController controle = new FornecedorController();
-        Fornecedor fornecedorBuscado = controle.buscarFornecedorPorCnpj(input.getText()); // cpf do cliente a ser buscado
+        Fornecedor fornecedorBuscado = controle.buscarFornecedorPorCnpj(input.getText());
         if (fornecedorBuscado != null) {
             JOptionPane.showMessageDialog(null, "Fornecedor encontrado com sucesso!");
-            nomeOutput.setText(fornecedorBuscado.getNome());
-            cpfOutput.setText(fornecedorBuscado.getCnpj());
-            emailOutput.setText(fornecedorBuscado.getEmail());
-            senhaOutput.setText(fornecedorBuscado.getSenha());
+            nomeInput.setText(fornecedorBuscado.getNome());
+            cnpjInput.setText(fornecedorBuscado.getCnpj());
+            emailInput.setText(fornecedorBuscado.getEmail());
         } else {
             JOptionPane.showMessageDialog(null, "Fornecedor não encontrado");
         }
@@ -202,6 +195,20 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
     private void inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputActionPerformed
+
+    private void salvarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBtnActionPerformed
+        FornecedorController controle = new FornecedorController();
+        Fornecedor fornecedorBuscado = new Fornecedor();
+        fornecedorBuscado.setCnpj(cnpjInput.getText());
+        fornecedorBuscado.setNome(nomeInput.getText());
+        fornecedorBuscado.setEmail(emailInput.getText());
+        boolean inserido = controle.atualizarFornecedor(fornecedorBuscado);
+        if (inserido) {
+            JOptionPane.showMessageDialog(null, "Fornecedor inserido com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Falha ao inserir o fornecedor.");
+        }
+    }//GEN-LAST:event_salvarBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,7 +237,9 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
+        FornecedorController controle = new FornecedorController();
+        controle.buscarFornecedorPorCnpj("1");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -240,19 +249,18 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel cpfOutput;
-    private javax.swing.JLabel emailOutput;
+    private javax.swing.JTextField cnpjInput;
+    private javax.swing.JTextField emailInput;
     private javax.swing.JTextField input;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel nomeOutput;
+    private javax.swing.JTextField nomeInput;
     private javax.swing.JButton okBtn;
-    private javax.swing.JLabel senhaOutput;
+    private javax.swing.JButton salvarBtn;
     // End of variables declaration//GEN-END:variables
 }
