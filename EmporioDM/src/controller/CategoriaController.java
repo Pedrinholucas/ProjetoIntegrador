@@ -134,7 +134,45 @@ public class CategoriaController {
         }
         return null;
     }
+    
+    
+     public Categoria buscarCategoriaPorNome(String nome) {
+        String sql = "SELECT * FROM categoria WHERE nome like ?";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
 
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, nome+"%");
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Categoria categoria = new Categoria();
+                categoria.setId(rs.getInt("id"));
+                categoria.setNome(rs.getString("nome"));
+                categoria.setDescricao(rs.getString("descricao"));
+                return categoria;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
+    
     public List<Categoria> listarTodasCategorias() {
         String sql = "SELECT * FROM categoria";
         PreparedStatement stmt = null;

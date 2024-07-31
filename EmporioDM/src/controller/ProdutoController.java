@@ -17,7 +17,7 @@ public class ProdutoController {
     }
 
     public boolean inserirProduto(Produto produto) {
-        String sql = "INSERT INTO produto (nome, valor, descricao, quantidadeEstoque, detalhesGarantia, idFornecedor, idCategoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO produto (nome, valor, descricao, estoque, detalhesGarantia, idFornecedor, idCategoria) VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement stmt = null;
 
         try {
@@ -65,7 +65,7 @@ public class ProdutoController {
                 produto.setNome(rs.getString("nome"));
                 produto.setValor(rs.getFloat("valor"));
                 produto.setDescricao(rs.getString("descricao"));
-                produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
+                produto.setQuantidadeEstoque(rs.getInt("estoque"));
                 produto.setDetalhesGarantia(rs.getString("detalhesGarantia"));
                 produto.setIdFornecedor(rs.getInt("idFornecedor"));
                 produto.setIdCategoria(rs.getInt("idCategoria"));
@@ -135,7 +135,7 @@ public class ProdutoController {
 
 
     public boolean atualizarProduto(Produto produto) {
-        String sql = "UPDATE produto SET nome = ?, valor = ?, descricao = ?, quantidadeEstoque = ?, detalhesGarantia = ?, idFornecedor = ?, idCategoria = ? WHERE id = ?";
+        String sql = "UPDATE produto SET nome = ?, valor = ?, descricao = ?, estoque = ?, detalhesGarantia = ?, idFornecedor = ?, idCategoria = ? WHERE id = ?";
         PreparedStatement stmt = null;
 
         try {
@@ -209,7 +209,7 @@ public class ProdutoController {
                 produto.setNome(rs.getString("nome"));
                 produto.setValor(rs.getFloat("valor"));
                 produto.setDescricao(rs.getString("descricao"));
-                produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
+                produto.setQuantidadeEstoque(rs.getInt("estoque"));
                 produto.setDetalhesGarantia(rs.getString("detalhesGarantia"));
                 produto.setIdFornecedor(rs.getInt("idFornecedor"));
                 produto.setIdCategoria(rs.getInt("idCategoria"));

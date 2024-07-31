@@ -116,6 +116,43 @@ public class TransportadoraController {
         }
         return null;
     }
+    
+        public Transportadora buscarTransportadoraPorNome(String nome) {
+        String sql = "SELECT * FROM transportadora WHERE nome like ?";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setString(1, nome+'%');
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Transportadora transportadora = new Transportadora();
+                transportadora.setId(rs.getInt("id"));
+                transportadora.setCnpj(rs.getString("cnpj"));
+                transportadora.setNome(rs.getString("nome"));
+                return transportadora;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return null;
+    }
 
     public boolean atualizarTransportadora(Transportadora transportadora) {
         String sql = "UPDATE transportadora SET nome = ? WHERE cnpj = ?";

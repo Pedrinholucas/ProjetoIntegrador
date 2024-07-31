@@ -8,6 +8,7 @@ package view;
  *
  * @author pedro
  */
+import controller.ProdutoController;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -50,27 +51,9 @@ public class ListProduto extends JFrame {
 
     public static void main(String[] args) {
         // Exemplo de produtos
-        Produto produto1 = new Produto();
-        produto1.setId(1);
-        produto1.setNome("Produto A");
-        produto1.setValor(10.5f);
-        produto1.setDescricao("Descrição do Produto A");
-        produto1.setQuantidadeEstoque(100);
-        produto1.setDetalhesGarantia("Garantia de 1 ano");
-        produto1.setIdFornecedor(1);
-        produto1.setIdCategoria(1);
+        ProdutoController control = new ProdutoController();
 
-        Produto produto2 = new Produto();
-        produto2.setId(2);
-        produto2.setNome("Produto B");
-        produto2.setValor(20.0f);
-        produto2.setDescricao("Descrição do Produto B");
-        produto2.setQuantidadeEstoque(50);
-        produto2.setDetalhesGarantia("Garantia de 2 anos");
-        produto2.setIdFornecedor(2);
-        produto2.setIdCategoria(2);
-
-        List<Produto> produtos = List.of(produto1, produto2);
+        List<Produto> produtos = control.listarProdutos();
 
         // Criação e exibição do JFrame
         ListProduto frame = new ListProduto(produtos);

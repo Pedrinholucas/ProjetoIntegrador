@@ -3,47 +3,54 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package view;
+
 import controller.TransportadoraController;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.List;
 import models.Transportadora;
+
 /**
- *
- * @author pedro
+ * Lista de Transportadoras
  */
 public class ListTransportadora extends JFrame {
-
-
-
-    private JTable table;
-
     public ListTransportadora(List<Transportadora> transportadoras) {
         setTitle("Lista de Transportadoras");
         setSize(800, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
 
+        // Criação do modelo da tabela
         String[] columnNames = {"ID", "CNPJ", "Nome"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0);
 
-        for (Transportadora t : transportadoras) {
-            Object[] row = {t.getId(), t.getCnpj(), t.getNome()};
-            model.addRow(row);
+        // Adiciona transportadoras ao modelo da tabela
+        for (Transportadora transportadora : transportadoras) {
+            Object[] rowData = {
+                    transportadora.getId(),
+                    transportadora.getCnpj(),
+                    transportadora.getNome()
+            };
+            model.addRow(rowData);
         }
 
-        table = new JTable(model);
+        // Criação da tabela com o modelo
+        JTable table = new JTable(model);
+
+        // Adiciona a tabela a um JScrollPane para habilitar a rolagem
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
     }
 
     public static void main(String[] args) {
-        TransportadoraController controle = new TransportadoraController();
-        List<Transportadora> transportadoras = controle.listarTransportadoras();
+        // Exemplo de transportadoras
+        TransportadoraController control = new TransportadoraController();
 
-        SwingUtilities.invokeLater(() -> {
-            ListTransportadora frame = new ListTransportadora(transportadoras);
-            frame.setVisible(true);
-        });
+        List<Transportadora> transportadoras = control.listarTransportadoras();
+
+        // Criação e exibição do JFrame
+        ListTransportadora frame = new ListTransportadora(transportadoras);
+        frame.setVisible(true);
     }
 }
