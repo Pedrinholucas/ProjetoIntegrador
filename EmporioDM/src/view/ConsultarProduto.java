@@ -18,7 +18,7 @@ import models.Produto;
 public class ConsultarProduto extends javax.swing.JFrame {
     Produto produtoBuscado = null;
     /**
-     * Creates new form ConsultarCliente
+     * Creates new form ConsultarProduto
      */
     public ConsultarProduto() {
         initComponents();
@@ -50,6 +50,7 @@ public class ConsultarProduto extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         descricaoInput = new javax.swing.JTextArea();
         valorInput = new javax.swing.JTextField();
+        salvarBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
@@ -91,6 +92,13 @@ public class ConsultarProduto extends javax.swing.JFrame {
         descricaoInput.setRows(5);
         jScrollPane1.setViewportView(descricaoInput);
 
+        salvarBtn.setText("Salvar");
+        salvarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -104,8 +112,9 @@ public class ConsultarProduto extends javax.swing.JFrame {
                             .addComponent(jLabel3)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(92, 92, 92))
+                            .addComponent(jLabel7)
+                            .addComponent(salvarBtn))
+                        .addGap(64, 64, 64))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
@@ -152,7 +161,9 @@ public class ConsultarProduto extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(avaliacaoOutput))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(salvarBtn)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
@@ -224,6 +235,21 @@ public class ConsultarProduto extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputActionPerformed
 
+    private void salvarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBtnActionPerformed
+        ProdutoController protudoControle = new ProdutoController();
+        produtoBuscado.setNome(nome.getText());
+        produtoBuscado.setValor(Float.parseFloat(valorInput.getText()));
+        produtoBuscado.setDescricao(descricaoInput.getText());
+        produtoBuscado.setQuantidadeEstoque(Integer.valueOf(estoqueInput.getText()));
+        boolean inserido = protudoControle.atualizarProduto(produtoBuscado);
+        if (inserido) {
+            JOptionPane.showMessageDialog(null, "Produto inserido com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Falha ao inserir o produto.");
+        }
+    
+    }//GEN-LAST:event_salvarBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -281,6 +307,7 @@ public class ConsultarProduto extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nome;
     private javax.swing.JButton okBtn;
+    private javax.swing.JButton salvarBtn;
     private javax.swing.JTextField valorInput;
     // End of variables declaration//GEN-END:variables
 }
