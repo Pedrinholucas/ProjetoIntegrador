@@ -7,16 +7,14 @@ import java.util.List;
 import connection.ConnectionMySQL;
 
 public class FornecedorController {
-    private Connection con;
+    private Connection con= new ConnectionMySQL().conectar();
 
     public void FornecedorController() {
-        con = new ConnectionMySQL().conectar();
     }
 
     public boolean inserirFornecedor(Fornecedor fornecedor) {
         String sql = "INSERT INTO Fornecedor (cnpj, nome, email, senha) VALUES (?, ?, ?, ?)";
         PreparedStatement stmt = null;
-        con = new ConnectionMySQL().conectar();
         try {
             stmt = con.prepareStatement(sql);
             stmt.setString(1, fornecedor.getCnpj());
@@ -83,15 +81,12 @@ public class FornecedorController {
         String sql = "SELECT * FROM fornecedor WHERE cnpj = ?";
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        System.out.println("amo cenis");
 
         try {
             stmt = con.prepareStatement(sql);
             stmt.setString(1, cnpj);
             rs = stmt.executeQuery();
-            System.out.println("amo penis");
             if (rs.next()) {
-                System.out.println("amo denis");
                 Fornecedor fornecedor = new Fornecedor();
                 fornecedor.setId(rs.getInt("id"));
                 fornecedor.setCnpj(rs.getString("cnpj"));
@@ -155,7 +150,7 @@ public class FornecedorController {
     }
 
     public boolean atualizarFornecedor(Fornecedor fornecedor) {
-        String sql = "UPDATE Fornecedor SET cnpj = ?, nome = ?, email = ?, senha = ?, WHERE id = ?";
+        String sql = "UPDATE Fornecedor SET cnpj = ?, nome = ?, email = ?, senha = ? WHERE id = ?";
         PreparedStatement stmt = null;
 
         try {

@@ -92,22 +92,22 @@ public class ProdutoController {
     }
     
     public Produto buscarProdutoPorNome(String nome) {
-        String sql = "SELECT * FROM produto WHERE nome = ?";
+        String sql = "SELECT * FROM produto WHERE nome like ?";
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
             stmt = con.prepareStatement(sql);
-            stmt.setString(1, nome);
+            stmt.setString(1, nome+'%');
             rs = stmt.executeQuery();
-
+            
             if (rs.next()) {
                 Produto produto = new Produto();
                 produto.setId(rs.getInt("id"));
                 produto.setNome(rs.getString("nome"));
                 produto.setValor(rs.getFloat("valor"));
                 produto.setDescricao(rs.getString("descricao"));
-                produto.setQuantidadeEstoque(rs.getInt("quantidadeEstoque"));
+                produto.setQuantidadeEstoque(rs.getInt("estoque"));
                 produto.setDetalhesGarantia(rs.getString("detalhesGarantia"));
                 produto.setIdFornecedor(rs.getInt("idFornecedor"));
                 produto.setIdCategoria(rs.getInt("idCategoria"));

@@ -17,7 +17,7 @@ import models.Fornecedor;
  * @author janai
  */
 public class ConsultarFornecedor extends javax.swing.JFrame {
-
+    Fornecedor fornecedorBuscado = null;
     /**
      * Creates new form ConsultarCliente
      */
@@ -181,7 +181,7 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
         // TODO add your handling code here:
         FornecedorController controle = new FornecedorController();
-        Fornecedor fornecedorBuscado = controle.buscarFornecedorPorCnpj(input.getText());
+        fornecedorBuscado  = controle.buscarFornecedorPorCnpj(input.getText());
         if (fornecedorBuscado != null) {
             JOptionPane.showMessageDialog(null, "Fornecedor encontrado com sucesso!");
             nomeInput.setText(fornecedorBuscado.getNome());
@@ -198,7 +198,6 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
 
     private void salvarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarBtnActionPerformed
         FornecedorController controle = new FornecedorController();
-        Fornecedor fornecedorBuscado = new Fornecedor();
         fornecedorBuscado.setCnpj(cnpjInput.getText());
         fornecedorBuscado.setNome(nomeInput.getText());
         fornecedorBuscado.setEmail(emailInput.getText());
@@ -238,8 +237,6 @@ public class ConsultarFornecedor extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         
-        FornecedorController controle = new FornecedorController();
-        controle.buscarFornecedorPorCnpj("1");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

@@ -1,4 +1,4 @@
-package Controller;
+package controller;
 
 import models.Avaliacao;
 import connection.ConnectionMySQL;
@@ -143,6 +143,44 @@ public class AvaliacaoController {
 
         try {
             stmt = con.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Avaliacao avaliacao = new Avaliacao();
+                avaliacao.setId(rs.getInt("id"));
+                avaliacao.setNumero(rs.getFloat("nota"));
+                avaliacao.setIdProduto(rs.getInt("idProduto"));
+                avaliacoes.add(avaliacao);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                System.out.println(e);
+            }
+        }
+        return avaliacoes;
+    }
+    
+        public List<Avaliacao> listarTodasAvaliacoesPorProduto(int idProduto) {
+        String sql = "SELECT * FROM avaliacao where id = ?";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Avaliacao> avaliacoes = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement(sql);
+            stmt.setInt(1, idProduto);
             rs = stmt.executeQuery();
 
             while (rs.next()) {

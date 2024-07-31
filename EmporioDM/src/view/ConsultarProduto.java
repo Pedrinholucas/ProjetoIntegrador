@@ -4,20 +4,19 @@
  */
 package view;
 
-
-import controller.ClienteController;
-import controller.FornecedorController;
+import controller.ProdutoController;
 import java.util.List;
 import javax.swing.JOptionPane;
-import models.Cliente;
-import models.Fornecedor;
+import controller.AvaliacaoController;
+import models.Avaliacao;
+import models.Produto;
 
 /**
  *
  * @author janai
  */
 public class ConsultarProduto extends javax.swing.JFrame {
-
+    Produto produtoBuscado = null;
     /**
      * Creates new form ConsultarCliente
      */
@@ -42,12 +41,15 @@ public class ConsultarProduto extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        nomeOutput = new javax.swing.JLabel();
-        cpfOutput = new javax.swing.JLabel();
-        emailOutput = new javax.swing.JLabel();
-        senhaOutput = new javax.swing.JLabel();
         input = new javax.swing.JTextField();
         okBtn = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        avaliacaoOutput = new javax.swing.JLabel();
+        nome = new javax.swing.JTextField();
+        estoqueInput = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descricaoInput = new javax.swing.JTextArea();
+        valorInput = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
@@ -58,23 +60,15 @@ public class ConsultarProduto extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("CNPJ do fornecedor:");
+        jLabel1.setText("Nome do Produto");
 
         jLabel3.setText("nome:");
 
-        jLabel4.setText("Cnpj");
+        jLabel4.setText("valor");
 
-        jLabel5.setText("email:");
+        jLabel5.setText("descrição");
 
-        jLabel6.setText("senha:");
-
-        nomeOutput.setText("...");
-
-        cpfOutput.setText("...");
-
-        emailOutput.setText("...");
-
-        senhaOutput.setText("...");
+        jLabel6.setText("estoque");
 
         input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +83,14 @@ public class ConsultarProduto extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setText("avaliação");
+
+        avaliacaoOutput.setText("...");
+
+        descricaoInput.setColumns(20);
+        descricaoInput.setRows(5);
+        jScrollPane1.setViewportView(descricaoInput);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -101,22 +103,24 @@ public class ConsultarProduto extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel3)
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addGap(66, 66, 66))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(92, 92, 92))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nomeOutput)
-                    .addComponent(cpfOutput)
-                    .addComponent(emailOutput)
-                    .addComponent(senhaOutput)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(okBtn)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(okBtn))
+                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(estoqueInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(avaliacaoOutput)
+                    .addComponent(valorInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,28 +130,34 @@ public class ConsultarProduto extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(okBtn))
-                .addGap(52, 52, 52)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(nomeOutput))
+                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(cpfOutput))
+                    .addComponent(valorInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(emailOutput))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(68, 68, 68))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(senhaOutput))
-                .addContainerGap(127, Short.MAX_VALUE))
+                    .addComponent(estoqueInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(avaliacaoOutput))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setText("Consultar dados de fornecedor");
+        jLabel2.setText("Consultar e editar dados do Produto");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -165,7 +175,7 @@ public class ConsultarProduto extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(42, 42, 42)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -188,17 +198,26 @@ public class ConsultarProduto extends javax.swing.JFrame {
 
     private void okBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okBtnActionPerformed
         // TODO add your handling code here:
-        FornecedorController controle = new FornecedorController();
-        Fornecedor fornecedorBuscado = controle.buscarFornecedorPorCnpj(input.getText()); // cpf do cliente a ser buscado
-        if (fornecedorBuscado != null) {
-            JOptionPane.showMessageDialog(null, "Fornecedor encontrado com sucesso!");
-            nomeOutput.setText(fornecedorBuscado.getNome());
-            cpfOutput.setText(fornecedorBuscado.getCnpj());
-            emailOutput.setText(fornecedorBuscado.getEmail());
-            senhaOutput.setText(fornecedorBuscado.getSenha());
-        } else {
-            JOptionPane.showMessageDialog(null, "Fornecedor não encontrado");
+        ProdutoController controle = new ProdutoController();
+        produtoBuscado = controle.buscarProdutoPorNome(input.getText()); //nome
+        AvaliacaoController avalCtrl = new AvaliacaoController();
+        if (produtoBuscado == null) {
+            JOptionPane.showMessageDialog(null, "Produto não encontrado");
+        } else{
+            JOptionPane.showMessageDialog(null, "Produto encontrado com sucesso!");
+            nome.setText(produtoBuscado.getNome());
+            valorInput.setText(String.valueOf(produtoBuscado.getValor()));
+            estoqueInput.setText(String.valueOf(produtoBuscado.getQuantidadeEstoque()));
+            List<Avaliacao> avals = avalCtrl.listarTodasAvaliacoesPorProduto(produtoBuscado.getId());
+            int nota = 0;
+            for(Avaliacao aval: avals){
+                nota += aval.getNumero();
+            };
+            System.out.println(String.valueOf(avals.size()));
+            nota /= avals.size();
+            avaliacaoOutput.setText(String.valueOf(nota));
         }
+        
     }//GEN-LAST:event_okBtnActionPerformed
 
     private void inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputActionPerformed
@@ -244,8 +263,9 @@ public class ConsultarProduto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel cpfOutput;
-    private javax.swing.JLabel emailOutput;
+    private javax.swing.JLabel avaliacaoOutput;
+    private javax.swing.JTextArea descricaoInput;
+    private javax.swing.JTextField estoqueInput;
     private javax.swing.JTextField input;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -253,12 +273,14 @@ public class ConsultarProduto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
-    private javax.swing.JLabel nomeOutput;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField nome;
     private javax.swing.JButton okBtn;
-    private javax.swing.JLabel senhaOutput;
+    private javax.swing.JTextField valorInput;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,6 +15,8 @@ public class Fornecedor {
         this.email = email;
         this.senha = senha;
     }
+    
+    
 
     public Integer getId() {
         return id;
