@@ -54,4 +54,8 @@ public class ListFornecedor extends JFrame {
         ListFornecedor frame = new ListFornecedor(fornecedores);
         frame.setVisible(true);
     }
+
+    ListFornecedor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -53,4 +53,8 @@ public class ListTransportadora extends JFrame {
         ListTransportadora frame = new ListTransportadora(transportadoras);
         frame.setVisible(true);
     }
+
+    ListTransportadora() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

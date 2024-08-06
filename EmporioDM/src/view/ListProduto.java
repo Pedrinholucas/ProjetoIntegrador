@@ -59,5 +59,9 @@ public class ListProduto extends JFrame {
         ListProduto frame = new ListProduto(produtos);
         frame.setVisible(true);
     }
+
+    ListProduto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
 
