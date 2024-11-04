@@ -123,14 +123,14 @@ public class ClienteModel {
         Connection conn = conexao.conectar();
         String resultado = "";
         try {
-            String consulta = "UPDATE cliente SET nome = ?, cpf = ?, senha = ?, email = ?, telefone = ? WHERE id = ?";
+            String consulta = "UPDATE cliente SET nome = ?, cpf = ?, senha = ?, email = ?, telefone = ? WHERE nome = ?";
             PreparedStatement stm = conn.prepareStatement(consulta);
             stm.setString(1, cliente.getNome());
             stm.setString(2, cliente.getCpf());
             stm.setString(3, cliente.getSenha()+"");
             stm.setString(4, cliente.getEmail());
             stm.setInt(5, cliente.getTelefone());
-            stm.setInt(6, cliente.getId());
+            stm.setString(6, cliente.getNome());
             stm.executeUpdate();
             resultado = "alterado";
         } catch (SQLException ex) {
@@ -140,7 +140,7 @@ public class ClienteModel {
         return resultado;
     }
     
-    public String removerCliente(int cliente){
+    public String removerCliente(int id){
         ConexaoMySQL conexao = new ConexaoMySQL();
         Connection conn = conexao.conectar();
         String resultado = "";
@@ -148,7 +148,7 @@ public class ClienteModel {
             String consulta = "DELETE FROM cliente WHERE id = ?";
 
             PreparedStatement stm = conn.prepareStatement(consulta);
-            stm.setInt(1, cliente);
+            stm.setInt(1, id);
             
             stm.executeUpdate();
             resultado = "removido";

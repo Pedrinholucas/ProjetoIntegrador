@@ -29,6 +29,16 @@ public class ClienteController {
         return new ModelAndView("consultarCliente", "command", new Cliente()); 
     }
     
+    @RequestMapping(value = "/removerCliente", method = RequestMethod.GET) 
+    public ModelAndView cliente3() {
+        return new ModelAndView("removerCliente", "command", new Cliente()); 
+    }
+    
+    @RequestMapping(value = "/atualizarCliente", method = RequestMethod.GET) 
+    public ModelAndView cliente4() {
+        return new ModelAndView("atualizarCliente", "command", new Cliente()); 
+    }
+    
     @ModelAttribute("cliente") 
     public Cliente criarClienteModelo() { 
         return new Cliente(); 
@@ -64,6 +74,42 @@ public class ClienteController {
         modelo.addAttribute("senha", dadosCliente.getSenha());
         modelo.addAttribute("telefone", dadosCliente.getTelefone());
         return "consultarCliente"; 
+    }
+    
+    @RequestMapping(value = "/removerCliente", method = RequestMethod.POST) 
+    public String removerCliente(@ModelAttribute("cliente3")Cliente est, Model modelo) { 
+       
+        Cliente dadosCliente = consultarClienteBancoId(est.getId());
+       
+        ClienteModel con = new ClienteModel();
+        con.removerCliente(dadosCliente.getId());
+         modelo.addAttribute("resultado", "apagou :)"); 
+        return "removerCliente"; 
+    }
+    
+    @RequestMapping(value = "/atualizarClienteConsulta", method = RequestMethod.POST) 
+    public String atualizarCliente(@ModelAttribute("cliente4")Cliente est, Model modelo) { 
+       
+        Cliente dadosCliente = consultarClienteBancoId(est.getId());
+        
+        modelo.addAttribute("nome", dadosCliente.getNome()); 
+        modelo.addAttribute("cpf", dadosCliente.getCpf());
+        modelo.addAttribute("email", dadosCliente.getEmail());
+        modelo.addAttribute("senha", dadosCliente.getSenha());
+        modelo.addAttribute("telefone", dadosCliente.getTelefone());
+        modelo.addAttribute("id", dadosCliente.getId());
+        return "atualizarCliente"; 
+    }    
+    @RequestMapping(value = "/atualizarClienteMudanca", method = RequestMethod.POST) 
+    public String atualizarCliente2(@ModelAttribute("cliente4")Cliente est, Model modelo) { 
+        System.out.println(est.getId());
+                System.out.println("xang ja zhiuuuuuuuuuuu");        
+        modelo.addAttribute("resultado", "certissimo amigo, mudanças aplicadas"); 
+
+        ClienteModel con = new ClienteModel();
+        String res = con.alterarCliente(est);
+        System.out.println(res + " bagulho enorme de grandes proporções");
+        return "atualizarCliente"; 
     }
     
     public ArrayList<Cliente> consultarClienteBanco(){
