@@ -1,0 +1,125 @@
+:root {
+    height: 100%;
+}
+input {
+    box-sizing: border-box;
+    outline: none;
+}
+
+textarea{
+    width: 99%;
+    padding-bottom: 50px;    
+    background: #cfcbdd;
+}
+
+select{
+    width: 100%;
+    background: #b7afc4;
+}
+
+body {
+    background: #290631;
+    background-size: 100%;
+    margin: 0;
+    height: 100%;
+    font-family: "Open Sans", sans-serif;
+    font-size: 14px;
+}
+.form-centro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+#formulario {
+    width: 600px;
+    min-height: 400px;
+    background: #e6e6fa;
+    border-radius: 6px;
+    padding: 20px 30px;
+}
+#formulario legend {
+    color: #290631;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px 0;
+    font-size: 22px;
+
+}
+.input-group {
+    margin: 10px;
+}
+.input-group label {
+    display: inline;
+    font-size: 14px;
+    font-weight: bold;
+    color: #290631;
+    cursor: pointer;
+}
+
+.input-group input:not([type="checkbox"]) {
+    background: #cfcbdd;
+    border: 1px solid #290631;
+    border-radius: 2px;
+    padding: 8px 10px;
+    display: inline;
+    width: 100%;
+}
+
+.input-group input:focus {
+    border-color: #290631;
+}
+
+.colunas {
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #290631;
+    cursor: pointer;
+}
+.colunas .input-group {
+    width: 48%;
+}
+.footer {
+    font-weight: bold;
+     text-align: center;
+}
+.botao {
+  display: inline-block; /* Para garantir que a tag se comporte como um botão */
+  padding: 10px 20px; /* Espaçamento interno do botão */
+  font-size: 16px; /* Tamanho da fonte */
+  color: white; /* Cor do texto */
+  background-color: #290631; /* Cor de fundo */
+  border: 2px solid #290631; /* Borda */
+  border-radius: 50px; /* Bordas arredondadas */
+  text-decoration: none; /* Remove o sublinhado */
+  text-align: center; /* Centraliza o texto */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Efeito hover */
+.botao:hover {
+  background-color: #e6e6fa; /* Fundo muda para branco */
+  color: #290631; /* Texto muda para a cor da borda */
+}
+.erro { 
+    color: #ff0000;
+} 
+
+.blocoerro { 
+    color: #000; 
+    background-color: #ffEEEE; 
+    border: 3px solid #ff0000; 
+    padding: 8px; 
+    margin: 16px; 
+}
+
+.textofds {
+    font-size: 16px;
+    font-weight: bold;
+    color: #290631;
+}

@@ -6,16 +6,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Formulário</title>
+        <title>Cliente</title>
+        <link rel="shortcut icon" type="imagex/png" href="${pageContext.request.contextPath}/resources/images/icon.png">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/estilo.css" />
-
     </head>
      <body>
         <div class="form-centro">
             
             <form:form method="POST" action="${pageContext.request.contextPath}/adicionarCliente" commandName="cliente" name="formulario" id="formulario">
                 <form:errors path = "*" cssClass = "blocoerro" element = "div" />
-                <center><img width="80%" src="${pageContext.request.contextPath}/resources/images/figura.png"></center>
+                <center><img width="20%" src="${pageContext.request.contextPath}/resources/images/figura.png"></center>
                 <legend>
                     Cadastro de Cliente
                 </legend>
@@ -49,7 +49,7 @@
                     <form:input path = "telefone" />
                 </div>
                 <div class="footer">
-                    <input type = "submit" value = "::. Inserir .::"/> 
+                    <input class="botao" type = "submit" value = "Inserir"/> 
                 </div>
             </div>
         </form:form>

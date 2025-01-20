@@ -12,41 +12,33 @@
     </head>
      <body>
         <div class="form-centro">
-            
-            <form:form method="POST" action="${pageContext.request.contextPath}/adicionarCliente" commandName="cliente" name="formulario" id="formulario">
+            <form:form method="POST" action="${pageContext.request.contextPath}/atualizarClienteEdicao" commandName="cliente" name="formulario" id="formulario">
                 <form:errors path = "*" cssClass = "blocoerro" element = "div" />
                 <center><img width="20%" src="${pageContext.request.contextPath}/resources/images/figura.png"></center>
                 <legend>
-                    Cadastro de Cliente
+                    Edição de Cliente
                 </legend>
                 <div class="input-group">
                     <form:label path= "nome">Nome</form:label>
-
-                    <form:input path = "nome" />
-
+                    <form:input path = "nome" value="${nome}"  />
                     <form:errors path = "nome" cssClass="erro" />
                 </div>
                 <div class="input-group">
                     <form:label path= "cpf">CPF</form:label>
-
-                    <form:input path = "cpf" />
-
-                    <form:errors path = "cpf" cssClass="erro" />
+                    <form:input path = "cpf" value="${cpf}" />
+                    <form:errors path = "cpf"  cssClass="erro" />
                 </div>
                 <div class="input-group">
                     <form:label path= "senha">Senha</form:label>
-
-                    <form:input path = "senha" />
+                    <form:input path = "senha" value="${senha}"  />
                 </div>
                 <div class="input-group">
                     <form:label path= "email">Email</form:label>
-
-                    <form:input path = "email" />
+                    <form:input path = "email" value="${email}" />
                 </div>
                 <div class="input-group">
                     <form:label path= "telefone">Telefone</form:label>
-
-                    <form:input path = "telefone" />
+                    <form:input path = "telefone" value="${telefone}"  />
                 </div>
                 <div class="footer">
                     <input class="botao" type = "submit" value = "Inserir"/> 

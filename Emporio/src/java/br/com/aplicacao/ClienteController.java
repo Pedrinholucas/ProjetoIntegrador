@@ -34,10 +34,20 @@ public class ClienteController {
         return new ModelAndView("removerCliente", "command", new Cliente()); 
     }
     
-    @RequestMapping(value = "/atualizarCliente", method = RequestMethod.GET) 
+    @RequestMapping(value = "/atualizarClienteConsulta", method = RequestMethod.GET) 
     public ModelAndView cliente4() {
-        return new ModelAndView("atualizarCliente", "command", new Cliente()); 
+        return new ModelAndView("atualizarClienteConsulta", "commandA", new Cliente()); 
     }
+    
+    @RequestMapping(value = "/atualizarClienteEdicao", method = RequestMethod.GET) 
+    public ModelAndView cliente5() {
+        return new ModelAndView("atualizarClienteEdicao", "commandA", new Cliente()); 
+    }
+    
+    @RequestMapping(value = "/clienteIndex", method = RequestMethod.GET) 
+    public ModelAndView cliente6() {
+        return new ModelAndView("clienteIndex", "command", new Cliente()); 
+    } 
     
     @ModelAttribute("cliente") 
     public Cliente criarClienteModelo() { 
@@ -46,6 +56,11 @@ public class ClienteController {
 
     @ModelAttribute("cliente2") 
     public Cliente criarClienteModelo2() { 
+        return new Cliente(); 
+    }
+    
+    @ModelAttribute("cliente5") 
+    public Cliente criarClienteModelo5() { 
         return new Cliente(); 
     }
     
@@ -60,7 +75,7 @@ public class ClienteController {
         modelo.addAttribute("email", est.getEmail()); 
         modelo.addAttribute("telefone", est.getTelefone()); 
         inserirClienteBanco(est);
-        return "resultadoCliente"; 
+        return "adicionarClienteResultado"; 
     }
     
     @RequestMapping(value = "/consultarCliente", method = RequestMethod.POST) 
@@ -88,7 +103,7 @@ public class ClienteController {
     }
     
     @RequestMapping(value = "/atualizarClienteConsulta", method = RequestMethod.POST) 
-    public String atualizarCliente(@ModelAttribute("cliente4")Cliente est, Model modelo) { 
+    public String atualizarCliente(@ModelAttribute("cliente4")@Validated Cliente est, BindingResult bindingResult, Model modelo) { 
        
         Cliente dadosCliente = consultarClienteBancoId(est.getId());
         
@@ -98,18 +113,20 @@ public class ClienteController {
         modelo.addAttribute("senha", dadosCliente.getSenha());
         modelo.addAttribute("telefone", dadosCliente.getTelefone());
         modelo.addAttribute("id", dadosCliente.getId());
-        return "atualizarCliente"; 
+        return "atualizarClienteEdicao"; 
     }    
-    @RequestMapping(value = "/atualizarClienteMudanca", method = RequestMethod.POST) 
-    public String atualizarCliente2(@ModelAttribute("cliente4")Cliente est, Model modelo) { 
-        System.out.println(est.getId());
-                System.out.println("xang ja zhiuuuuuuuuuuu");        
-        modelo.addAttribute("resultado", "certissimo amigo, mudanças aplicadas"); 
-
-        ClienteModel con = new ClienteModel();
-        String res = con.alterarCliente(est);
-        System.out.println(res + " bagulho enorme de grandes proporções");
-        return "atualizarCliente"; 
+    @RequestMapping(value = "/atualizarClienteEdicao", method = RequestMethod.POST) 
+    public String atualizarClienteEdicao(@ModelAttribute("cliente5")@Validated Cliente est, BindingResult bindingResult, Model modelo) { 
+        if (bindingResult.hasErrors()) { 
+            return "atualizarClienteConsulta";
+        } 
+        modelo.addAttribute("nome", est.getNome()); 
+        modelo.addAttribute("cpf", est.getCpf()); 
+        modelo.addAttribute("senha", est.getSenha()); 
+        modelo.addAttribute("email", est.getEmail()); 
+        modelo.addAttribute("telefone", est.getTelefone()); 
+        alterarClienteBanco(est);
+        return "atualizarClienteConsulta"; 
     }
     
     public ArrayList<Cliente> consultarClienteBanco(){
@@ -123,55 +140,17 @@ public class ClienteController {
         String res = con.inserirCliente(cli);
         return res;
     }
+    public String alterarClienteBanco(Cliente cli){
+        ClienteModel con = new ClienteModel();
+        String res = con.alterarCliente(cli);
+        return res;
+    }
     
     public Cliente consultarClienteBancoId(int id){
         ClienteModel con = new ClienteModel();
         Cliente lista = con.consultarClienteId(id);
         return lista;
     }
-    
-    @ModelAttribute("webLinguagensLista")
-    public ArrayList<String> webLinguagensLista() { 
-        ArrayList<String> webLinguagensLista = new ArrayList<>(); 
-        webLinguagensLista.add("Inglês"); 
-        webLinguagensLista.add("Espanhol"); 
-        webLinguagensLista.add("Alemão"); 
-        webLinguagensLista.add("Francês"); 
-        return webLinguagensLista; 
-    }
-    
-    @ModelAttribute("webGeneroFilmes")
-    public ArrayList<String> webGeneroFilmes() { 
-        ArrayList<String> webGeneroFilmes = new ArrayList<>(); 
-        webGeneroFilmes.add("Terror"); 
-        webGeneroFilmes.add("Ação"); 
-        webGeneroFilmes.add("Romance"); 
-        webGeneroFilmes.add("Comédia"); 
-        webGeneroFilmes.add("Policial");
-        return webGeneroFilmes; 
-    }
-
-    @ModelAttribute("webListaCidades") 
-    public Map<String, String> webListaCidades() { 
-        Map<String, String> listaCidades = new HashMap<>();
-        listaCidades.put("ITB", "Ituiutaba");
-        listaCidades.put("PTM", "Patos de Minas");
-        listaCidades.put("PTU", "Paracatu");
-        listaCidades.put("PTC", "Patos de Minas");
-        listaCidades.put("URA", "Uberaba");
-        listaCidades.put("UDI", "Uberlândia");
-        return listaCidades;
-    }
-    
-    @ModelAttribute("webListaDesejos") 
-    public Map<String, String> webListaDesejos() { 
-        Map<String, String> listaDesejos = new HashMap<>();
-        listaDesejos.put("Viagem", "Viagem");
-        listaDesejos.put("Férias", "Férias");
-        listaDesejos.put("Compras", "Compras");
-        return listaDesejos;
-    }
-    
         
     @ModelAttribute("webConsultaClientes") 
     public Map<Integer, String> webConsultaClientes() { 

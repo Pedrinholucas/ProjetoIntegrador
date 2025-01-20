@@ -6,16 +6,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Formulário</title>
+        <title>Cliente</title>
+        <link rel="shortcut icon" type="imagex/png" href="${pageContext.request.contextPath}/resources/images/icon.png">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/estilo.css" />
-        
     </head>
     <body>
         <div class="form-centro">
             
             <form:form method="POST" action="${pageContext.request.contextPath}/consultarCliente" modelAttribute="cliente" name="formulario" id="formulario">
                 <form:errors path = "*" cssClass = "blocoerro" element = "div" />
-                <center><img width="40%" src="${pageContext.request.contextPath}/resources/images/figura.png"></center>
+                <center><img width="20%" src="${pageContext.request.contextPath}/resources/images/figura.png"></center>
                 <legend>
                     Informação do cliente 
                 </legend>
@@ -28,7 +28,7 @@
                     </form:select>
                 </div>
                  <div class="footer">
-                    <input type = "submit" value = "::. Consultar .::"/>
+                    <input class="botao" type = "submit" value = "Consultar"/>
                 </div>
                 
             
@@ -36,21 +36,28 @@
             <legend>
                 Dados Enviados pelo usuário
             </legend>
-            <div class="input-group">
-                Nome: ${nome}
-            </div>
-            <div class="input-group">
-                Email: ${email}
-            </div>
-            <div class="input-group">
-                CPF: ${cpf}
-            </div>
-            <div class="input-group">
-                Senha: ${senha}
-            </div>
-                        <div class="input-group">
-                Telefone:${telefone}
-            </div>
+            <table> 
+                <tr>
+                    <td class="textofds">Nome</td> 
+                    <td class="textofds">: ${nome}</td> 
+                </tr>
+                <tr> 
+                    <td class="textofds">CPF</td> 
+                    <td class="textofds">: ${cpf}</td> 
+                </tr> 
+                <tr> 
+                    <td class="textofds">Email</td> 
+                    <td class="textofds">: ${email}</td> 
+                </tr>
+                <tr> 
+                    <td class="textofds">Senha</td> 
+                    <td class="textofds">: ${senha}</td> 
+                </tr>
+                <tr> 
+                    <td class="textofds">Telefone</td> 
+                    <td class="textofds">: ${telefone}</td> 
+                </tr>
+            </table>
            
             </form:form>
         </div>
